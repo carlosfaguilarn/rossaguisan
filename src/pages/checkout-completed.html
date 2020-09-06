@@ -1,0 +1,66 @@
+<!--
+
+=========================================================
+* Rocket - Startup Bootstrap Template
+=========================================================
+
+* Product Page: https://themes.getbootstrap.com/product/rocket/
+* Copyright 2020 Themesberg (https://www.themesberg.com)
+* License (https://themes.getbootstrap.com/licenses/)
+
+* Coded by https://themesberg.com
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+    @@include('./_head.html', {
+        "path": "..",
+        "title": "Rocket - Checkout Completed Page"
+    })
+</head>
+
+<body>
+    @@include('./_navigation.html', {
+        "path": "..",
+        "classes": "navbar-light navbar-theme-primary"
+    })
+
+    <main>
+
+        @@include('./_preloader.html', {
+            "path": ".."
+        })
+
+        <section class="section section-xl py-7 pt-lg-8 bg-white">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8 text-center"> 
+                        <span class="icon icon-shape icon-shape-success rounded-circle mb-4"><span class="fas fa-check"></span></span>               
+                        <h1 class="mb-4">Your order is completed!</h1>
+                        <p class="lead mb-5 px-sm-5">Thank you for your order! Your order is being processed and will be completed within 3-6 hours. You will receive an email confirmation when your order is completed.</p>
+                        <a class="btn btn-primary animate-up-2" href="./invoice.html"><i class="fas fa-file-invoice mr-1"></i> Check invoice</a>   
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        @@include('./_footer-2.html', {
+            "path": "..",
+            "classes": "bg-primary text-white"
+        })
+
+    </main>
+
+    @@include('./_scripts.html', {
+        "path": ".."
+    })
+    
+</body>
+
+</html>

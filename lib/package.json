@@ -1,0 +1,61 @@
+{
+    "name": "rocket",
+    "version": "2.0.0",
+    "description": "Premium SaaS Bootstrap 4 template featuring over 20 pages and a fully integrated UI Kit crafted by Themesberg",
+    "main": "gulpfile.js",
+    "author": "Themesberg",
+    "keywords": [
+        "Saas",
+        "Software as a Service",
+        "bootstrap",
+        "bootstrap 4",
+        "bootstrap saas template",
+        "gulp",
+        "sass",
+        "html",
+        "js",
+        "jquery"
+    ],
+    "homepage": "https://themes.getbootstrap.com/product/rocket/",
+    "bugs": {
+        "email": "zoltan@themesberg.com"
+    },
+    "license": "Themesberg",
+    "devDependencies": {
+        "browser-sync": "2.26.7",
+        "del": "4.1.1",
+        "gulp": "4.0.2",
+        "gulp-autoprefixer": "6.1.0",
+        "gulp-clean-css": "4.2.0",
+        "gulp-cssbeautify": "1.0.1",
+        "gulp-file-include": "2.1.0",
+        "gulp-header": "2.0.7",
+        "gulp-htmlmin": "5.0.1",
+        "gulp-npm-dist": "^1.0.3",
+        "gulp-plumber": "1.2.1",
+        "gulp-rename": "1.4.0",
+        "gulp-sass": "4.0.2",
+        "gulp-sourcemaps": "2.6.5",
+        "gulp-uglify": "3.0.2",
+        "gulp-wait": "0.0.2",
+        "merge-stream": "2.0.0"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "5.11.2",
+        "bootstrap": "4.5.0",
+        "chartist": "^0.11.4",
+        "chartist-plugin-tooltips": "0.0.17",
+        "countup.js": "^1.9.3",
+        "headroom.js": "0.10.3",
+        "jquery": "^3.5.1",
+        "jquery-countdown": "2.2.0",
+        "jquery-validation": "1.19.1",
+        "jquery.counterup": "2.1.0",
+        "jqvmap": "^1.5.1",
+        "onscreen": "1.3.4",
+        "owl.carousel": "2.3.4",
+        "popper.js": "1.16.0",
+        "prismjs": "1.17.1",
+        "smooth-scroll": "^16.1.0"
+    }
+}

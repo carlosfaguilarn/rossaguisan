@@ -1,0 +1,36 @@
+//
+// Footer
+//
+
+.bd-footer {
+  font-size: $font-size-sm;
+
+  a {
+    font-weight: 400;
+    color: $body-color;
+
+    &:hover,
+    &:focus {
+      color: $link-color;
+    }
+  }
+
+  p {
+    margin-bottom: 0;
+    font-size: $font-size-base;
+  }
+}
+
+.bd-footer-links {
+  padding-left: 0;
+  margin-bottom: 1rem;
+
+  li {
+    display: inline-block;
+    font-size: $font-size-base;
+
+    + li {
+      margin-left: 1rem;
+    }
+  }
+}

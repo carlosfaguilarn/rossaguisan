@@ -1,0 +1,32 @@
+{
+  "name": "twbs/bootstrap",
+  "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+  "keywords": [
+    "css",
+    "js",
+    "sass",
+    "mobile-first",
+    "responsive",
+    "front-end",
+    "framework",
+    "web"
+  ],
+  "homepage": "https://getbootstrap.com/",
+  "authors": [
+    {
+      "name": "Zoltan Szogyenyi",
+      "email": "zoltan@themesberg.com"
+    },
+    {
+      "name": "Robert Tanislav",
+      "email": "robert@themesberg.com"
+    }
+  ],
+  "support": {
+    "issues": "https://themesberg.com/contact"
+  },
+  "license": "Themesberg License",
+  "replace": {
+    "twitter/bootstrap": "self.version"
+  }
+}

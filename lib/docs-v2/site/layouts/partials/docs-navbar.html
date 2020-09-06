@@ -1,0 +1,52 @@
+<header class="navbar navbar-nav navbar-expand navbar-dark navbar-theme-primary">
+  <div class="container px-3 px-md-4">
+    <div class="d-flex align-items-center">
+      <a class="navbar-brand mr-4" href="{{ .Site.BaseURL }}getting-started/overview/" aria-label="Rocket Documentation">
+        <img src="{{ .Site.BaseURL }}assets/brand/light.svg" height="30" alt="Rocket logo">
+        <span class="ml-2">Docs</span>
+      </a>
+
+      <div class="navbar-nav-scroll order-md-0 justify-content-start d-none d-md-flex">
+        <ul class="navbar-nav bd-navbar-nav flex-row">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ .Site.Params.bootstrap_themes }}" target="_blank" rel="noopener">Bootstrap Themes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ .Site.Params.blog }}" target="_blank" rel="noopener">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ .Site.Params.contact }}" target="_blank" rel="noopener">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <button class="btn btn-link bd-search-docs-toggle d-lg-none p-0 ml-3 order-3 ml-auto" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
+      {{ partial "icons/menu.svg" (dict "width" "30" "height" "30") }}
+    </button>
+
+    <div class="d-flex align-items-center">
+      <ul class="flex-row list-style-none mr-3 d-none d-lg-flex">
+        <li class="mr-3">
+          <a href="https://www.facebook.com/themesberg/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Like us on Facebook">
+            <i class="fab fa-facebook text-white"></i>
+          </a>
+        </li>
+        <li class="mr-3">
+          <a href="https://twitter.com/themesberg" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Follow us on Twitter">
+            <i class="fab fa-twitter text-white"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/themesberg" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Star us on Github">
+            <i class="fab fa-github text-white"></i>
+          </a>
+        </li>
+      </ul>
+      <div class="d-none d-lg-block">
+        <a class="btn btn-md btn-secondary animate-up-2 ml-3 d-none d-sm-inline-block" href="{{ .Site.Params.product_page }}" target="_blank"><i class="fas fa-download mr-2"></i>Buy now</a>
+        <a class="btn btn-md btn-outline-white animate-up-2 ml-3 d-none d-sm-inline-block" href="{{ .Site.Params.live_preview }}" target="_blank">Live preview</a>
+      </div>
+    </div>
+  </div>
+</header>

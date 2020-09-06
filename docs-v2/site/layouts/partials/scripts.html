@@ -1,0 +1,47 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+
+<!-- Core -->
+<!-- <script src="{{ .Site.BaseURL }}assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script> -->
+<script src="{{ .Site.BaseURL }}assets/vendor/headroom.js/dist/headroom.min.js"></script>
+
+<!-- Vendor JS -->
+<script src="{{ .Site.BaseURL }}assets/vendor/onscreen/dist/on-screen.umd.min.js"></script>
+<script src="{{ .Site.BaseURL }}assets/vendor/nouislider/distribute/nouislider.min.js"></script>
+<script src="{{ .Site.BaseURL }}assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="{{ .Site.BaseURL }}assets/vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+<script src="{{ .Site.BaseURL }}assets/vendor/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="{{ .Site.BaseURL }}assets/vendor/owl.carousel/dist/owl.carousel.min.js"></script>
+<script src="{{ .Site.BaseURL }}assets/vendor/jarallax/dist/jarallax.min.js"></script>
+<script src="{{ .Site.BaseURL }}assets/vendor/jquery.counterup/jquery.counterup.min.js"></script>
+<script src="{{ .Site.BaseURL }}assets/vendor/jquery-countdown/dist/jquery.countdown.min.js"></script>
+<script src="{{ .Site.BaseURL }}assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+<script src="{{ .Site.BaseURL }}assets/vendor/chartist/dist/chartist.min.js"></script>
+<script src="{{ .Site.BaseURL }}assets/vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+<script src="{{ .Site.BaseURL }}assets/vendor/jqvmap/dist/jquery.vmap.min.js"></script>
+<script src="{{ .Site.BaseURL }}assets/vendor/jqvmap/dist/maps/jquery.vmap.usa.js"></script>
+
+{{ if eq hugo.Environment "production" -}}
+<script src="{{ .Site.BaseURL }}dist/js/bootstrap.min.js"></script>
+{{ else -}}
+<script src="{{ .Site.BaseURL }}dist/js/bootstrap.js"></script>
+{{- end }}
+
+<!-- pixel JS -->
+<script src="{{ .Site.BaseURL }}assets/js/pixel.js"></script>
+
+{{ if eq .Page.Layout "docs" -}}
+<!-- <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script> -->
+{{- end }}
+
+{{- $vendor := resources.Match "js/vendor/*.js" -}}
+{{- $js := resources.Match "js/*.js" -}}
+{{- $targetDocsJSPath := printf "/assets/js/docs.js" -}}
+{{- $docsJs := append $js $vendor | resources.Concat $targetDocsJSPath -}}
+
+{{- if eq hugo.Environment "production" -}}
+  {{- $docsJs = $docsJs | resources.Minify -}}
+{{- end }}
+
+<script src="{{ $docsJs.Permalink | relURL }}"></script>

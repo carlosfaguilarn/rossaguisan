@@ -1,0 +1,40 @@
+<nav class="collapse bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  {{- $url := split .Permalink "/" -}}
+  {{- $base_url := .Site.BaseURL -}}
+  {{- $page_slug := index $url (sub (len $url) 2) -}}
+
+  <ul class="list-unstyled">
+  {{- range $group := .Site.Data.sidebar -}}
+    {{- $link := $group.title -}}
+    {{- $link_slug := $link | urlize -}}
+
+    {{- if $group.pages -}}
+      {{- $link = index $group.pages 0 -}}
+      {{- $link_slug = $link.title | urlize -}}
+    {{- end -}}
+
+    {{- $group_slug := $group.title | urlize -}}
+    {{- $active_group := eq $.Page.Params.group $group_slug }}
+
+    <li class="bd-sidenav-group my-1{{ if $active_group }} active{{ end }} js-sidenav-group{{ if $group.pages }} has-children{{ end }}">
+      <a class="d-inline-flex align-items-center bd-sidenav-group-link" {{ if $group.external_link }} target="_blank" {{ end }}  href="{{ if $group.external_link }}{{ $group.external_link }}{{ else }}{{ $base_url }}{{ $group_slug }}/{{ if $group.pages }}{{ $link_slug }}/{{ end }}{{ end }}"{{ if $active_group }} aria-current="true"{{ end }}>
+        {{ $group.title }} {{ if $group.new }}<span class="badge badge-md badge-primary px-2 ml-2">New</span>{{ end }}
+      </a>
+
+      {{- if $group.pages }}
+      <ul class="nav bd-sidenav flex-column mb-2">
+        {{- range $doc := $group.pages -}}
+          {{- $doc_slug := $doc.title | urlize }}
+          <li{{ if and $active_group (eq $page_slug $doc_slug) }} class="active bd-sidenav-active"{{ end }}>
+            <a href="{{ $base_url }}{{ $group_slug }}/{{ $doc_slug }}/"{{ if and $active_group (eq $page_slug $doc_slug) }} aria-current="page"{{ end }}>
+              {{- $doc.title -}} {{ if $doc.new }}<span class="badge badge-md badge-primary px-2 ml-2">New</span>{{ end }}
+            </a>
+          </li>
+        {{- end }}
+      </ul>
+      {{- end }}
+    </li>
+  {{- end }}
+
+  </ul>
+</nav>

@@ -1,0 +1,81 @@
+languageCode:           "en"
+title:                  "Rocket SaaS Dashboard Bootstrap 4 Template Documentation"
+baseURL:                "https://themesberg.com/docs/rocket/"
+enableInlineShortcodes: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe:           true
+  highlight:
+    noClasses:          false
+  tableOfContents:
+    startLevel:         2
+    endLevel:           6
+
+buildDrafts:            true
+buildFuture:            true
+
+enableRobotsTXT:        true
+metaDataFormat:         "yaml"
+disableKinds:           ["404", "taxonomy", "taxonomyTerm", "RSS"]
+
+publishDir:             "_gh_pages"
+
+module:
+  mounts:
+    - source:           dist
+      target:           static/dist
+    - source:           site/assets
+      target:           assets
+    - source:           site/content
+      target:           content
+    - source:           site/data
+      target:           data
+    - source:           site/layouts
+      target:           layouts
+    - source:           site/static
+      target:           static
+    - source:           site/static/assets/img/favicons/apple-touch-icon.png
+      target:           static/apple-touch-icon.png
+    - source:           site/static/assets/img/favicons/favicon.ico
+      target:           static/favicon.ico
+
+params:
+  base_path:             "/"
+  description:          ""
+  authors:              "Themesberg"
+  social_image_path:    assets/img/pixel-bootstrap-ui-kit-1.png
+  social_logo_path:     assets/brand/themesberg.png
+
+  product_page: "https://themesberg.com/product/bootstrap-themes/rocket-saas-dashboard-bootstrap-template"
+  live_preview: "https://demo.themesberg.com/rocket/"
+
+  current_version:      "3.0.0"
+  current_ruby_version: "4.3.1"
+  rfs_version:          "9.0.2"
+  docs_version:         "3.0"
+  repo:                 "https://github.com/themesberg/pixel-bootstrap-ui-kit"
+  twitter:              "themesberg"
+  facebook:              "themesberg"
+  slack:                "https://themesberg-slack.herokuapp.com/"
+  opencollective:       "https://opencollective.com/bootstrap"
+  blog:                 "https://themesberg.com/blog"
+  expo:                 "https://expo.getbootstrap.com/"
+  bootstrap_themes:     "https://themesberg.com/templates/bootstrap"
+  contact:               "https://themesberg.com/contact"
+
+  download:
+    source:             "https://github.com/twbs/bootstrap/archive/v4.3.1.zip"
+    dist:               "https://github.com/twbs/bootstrap/releases/download/v4.3.1/bootstrap-4.3.1-dist.zip"
+
+  cdn:
+    # See https://www.srihash.org for info on how to generate the hashes
+    css:              "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    css_hash:         "sha384-/6lbX9+KkxJ37SuZNGZvIY7OJ1Y4HnMDktxhRGMTibykJQC700uvkb8FD+wQFwR5"
+    js:               "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    js_hash:          "sha384-rLRS7v1QEQmfJtxwGaZLCibG9H7kaCrl3bEc6Fue7ipXYYgD4fxFaJr/DnLdfyKX"
+    js_bundle:        "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+    js_bundle_hash:   "sha384-qJnk2zki97foajIIDeB+SrHSZW73MoDj5lV5VA/6oCLigjyxMhdW0CvRwlH7AiwS"
+    popper:           "https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    popper_hash:      "sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"

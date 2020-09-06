@@ -1,0 +1,19 @@
+.preloader {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    transition: opacity .2s linear;
+    width: 100%;
+    z-index: 9999;
+
+    .loader-element {
+        animation: spin 4s linear infinite;
+    }
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

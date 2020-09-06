@@ -1,0 +1,115 @@
+//
+// Bootstrap docs content theming
+//
+
+#TableOfContents {
+
+  .badge {
+    @include font-size(.65rem);
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 1.5rem;
+  }
+
+  ul li {
+    list-style-type: none;
+    margin-bottom: .3rem;
+    a {
+      padding: .3rem .8rem;
+      @include font-size(.875rem);
+      color: rgba($black, .65);
+      @include border-radius(.25rem);
+
+      &:hover,
+      &:focus {
+        color: $primary;
+      }
+    }
+  }
+
+  & > ul > li > a {
+    @include font-size(.9rem);
+  }
+  
+}
+
+.bd-content {
+  // order: 1;
+
+  > h1,
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6 {
+    margin-bottom: 1.2rem;
+    @include display-flex();
+    @include align-items(center);
+  }
+
+  // Offset for the sticky header
+  > [id] {
+    @include media-breakpoint-up(lg) {
+      scroll-margin-top: 4rem;
+    }
+  }
+
+  > h2:not(:first-child) {
+    margin-top: 3rem;
+  }
+
+  > h3 {
+    margin-top: 1.5rem;
+  }
+
+  > ul li,
+  > ol li {
+    margin-bottom: .45rem;
+  }
+
+  // Override Bootstrap defaults
+  > .table {
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+
+    @include media-breakpoint-down(md) {
+      display: block;
+      overflow-x: auto;
+
+      &.table-bordered {
+        border: 0;
+      }
+    }
+
+    th,
+    td {
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:not(:last-child) {
+        padding-right: 1.5rem;
+      }
+    }
+
+    // Prevent breaking of code
+    td:first-child > code {
+      white-space: nowrap;
+    }
+  }
+}
+
+.bd-title {
+  @include font-size(3rem);
+}
+
+.bd-lead {
+  @include font-size(1.5rem);
+  font-weight: 300;
+}
+
+.bd-text-purple-bright {
+  color: $bd-purple-bright;
+}

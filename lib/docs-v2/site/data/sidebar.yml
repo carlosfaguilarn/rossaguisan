@@ -1,0 +1,48 @@
+- title: Getting started
+  pages:
+    - title: Overview
+    - title: Download
+    - title: Quick start
+    - title: License
+    - title: File structure
+    - title: Build tools
+    - title: Changelog
+
+- title: Foundation
+  pages:
+    - title: Colors
+    - title: Grid
+    - title: Icons
+    - title: Typography
+
+- title: Components
+  pages:
+    - title: Accordions
+    - title: Alerts
+    - title: Badges
+    - title: Breadcrumbs
+    - title: Buttons
+    - title: Forms
+    - title: Modals
+    - title: Navs
+    - title: Navbars
+    - title: Pagination
+    - title: Popovers
+    - title: Tables
+    - title: Tabs
+    - title: Toasts
+    - title: Timelines
+    - title: Tooltips
+
+- title: Dashboard
+  new: true
+  external_link: https://demo.themesberg.com/rocket/pages/dashboard/dashboard.html
+
+- title: Plugins
+  pages:
+    - title: Charts
+      new: true
+    - title: Vector Maps
+      new: true
+    - title: Headroom
+    - title: jQuery Counters

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{ partial "header" . }}
+  </head>
+  <body>
+    {{ partial "skippy" . }}
+
+    {{ partial "docs-navbar" . }}
+    {{ partial "docs-subnav" . }}
+
+    <div class="container my-4">
+      <div class="row flex-xl-nowrap">
+        <div class="col-lg-2 bd-sidebar">
+          {{ partial "docs-sidebar" . }}
+        </div>
+
+        <main class="col-lg-7 py-md-3 px-lg-5 bd-content" role="main">
+          <h1 class="bd-title" id="content">{{ .Title | markdownify }} {{ if .Page.Params.pro }}<span class="badge badge-tertiary px-2 ml-3">Pro</span>{{ end }}</h1>
+          <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
+          
+          {{ if .Page.Params.sections }}
+            <div class="row my-5">
+              {{ range .Page.Params.sections }}
+                <div class="col-lg-6 mb-4">
+                  <a class="d-block text-decoration-none" href="../{{ urlize .title }}/">
+                    <strong class="d-block h5 mb-0">{{ .title }}</strong>
+                    <span class="text-secondary">{{ .description }}</span>
+                  </a>
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ .Content }}
+        </main>
+
+        <div class="col-lg-3 bd-sidebar">
+          {{ if (eq .Page.Params.toc true) }}
+            <nav class="bd-toc bd-links mb-5 text-muted list-style-none" aria-label="Secondary navigation">
+              {{ .TableOfContents }}
+            </nav>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+
+    {{ partial "footer" . }}
+    {{ partial "scripts" . }}
+  </body>
+</html>
