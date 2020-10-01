@@ -110,7 +110,7 @@
                                     <img src="/lib/assets/img/team/{$smarty.session.USER_PHOTO}" class="card-img-top rounded-circle border-white" alt="Bonnie Green">
                                 </div>
                                 <div class="d-block">
-                                    <h2 class="h6">Hola, {$smarty.session.USER_NOMBRE}</h2>
+                                    <h2 class="h6">Hola!, {$smarty.session.USER_NOMBRE}</h2>
                                     <a href="/logout.php" class="btn btn-secondary btn-xs"><span class="mr-2"><span class="fas fa-sign-out-alt"></span></span>Cerrar sesión</a>
                                 </div>
                             </div>
