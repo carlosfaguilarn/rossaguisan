@@ -20,7 +20,7 @@ If(isset($_POST['nuevo_prestamo'])){
 if(isset($_GET['search'])){
     $html->assign('search', $_GET['search']); 
 }
- 
+
 // ASIGNAR VARIABLES NECESARIAS
 $html->assign('title', $title); 
 $html->assign('prestamos', $obj_prestamos->GetPrestamos());     

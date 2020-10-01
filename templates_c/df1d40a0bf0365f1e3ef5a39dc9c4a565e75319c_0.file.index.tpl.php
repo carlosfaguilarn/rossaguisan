@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2020-09-06 04:57:44
+/* Smarty version 3.1.36, created on 2020-09-12 01:05:01
   from 'C:\xampp\htdocs\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_5f54502838ebe0_10793261',
+  'unifunc' => 'content_5f5c029d38d3a4_75085313',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'df1d40a0bf0365f1e3ef5a39dc9c4a565e75319c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\templates\\index.tpl',
-      1 => 1599361061,
+      1 => 1599864582,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f54502838ebe0_10793261 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f5c029d38d3a4_75085313 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!--
 
 =========================================================
@@ -43,7 +43,8 @@ function content_5f54502838ebe0_10793261 (Smarty_Internal_Template $_smarty_tpl)
 
 <head> 
     <!-- Primary Meta Tags -->
-<title>Rocket - Dashboard</title>
+<title>Rossaguisan - <?php echo $_smarty_tpl->tpl_vars['title']->value;?>
+</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="title" content="Rossaguisan">
@@ -67,11 +68,11 @@ function content_5f54502838ebe0_10793261 (Smarty_Internal_Template $_smarty_tpl)
 <meta property="twitter:image" content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/rocket/rocket-preview.jpg">
 
 <!-- Favicon -->
-<link rel="apple-touch-icon" sizes="120x120" href="/lib/assets/img/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/lib/assets/img/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/lib/assets/img/favicon/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/lib/assets/img/favicon/r.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/lib/assets/img/favicon/r.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/lib/assets/img/favicon/r.png">
 <link rel="manifest" href="/lib/assets/img/favicon/site.webmanifest">
-<link rel="mask-icon" href="/lib/assets/img/favicon/safari-pinned-tab.svg" color="#ffffff">
+<link rel="mask-icon" href="/lib/assets/img/favicon/r.svg" color="#ffffff">
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="theme-color" content="#ffffff">
 
@@ -132,10 +133,12 @@ function content_5f54502838ebe0_10793261 (Smarty_Internal_Template $_smarty_tpl)
                             <div class="d-flex align-items-center">
                                 
                                 <div class="user-avatar lg-avatar mr-4">
-                                    <img src="/lib/assets/img/team/profile-rosario.jpg" class="card-img-top rounded-circle border-white" alt="Bonnie Green">
+                                    <img src="/lib/assets/img/team/<?php echo $_SESSION['USER_PHOTO'];?>
+" class="card-img-top rounded-circle border-white" alt="Bonnie Green">
                                 </div>
                                 <div class="d-block">
-                                    <h2 class="h6">Hola, Rosario</h2>
+                                    <h2 class="h6">Hola, <?php echo $_SESSION['USER_NOMBRE'];?>
+</h2>
                                     <a href="/logout.php" class="btn btn-secondary btn-xs"><span class="mr-2"><span class="fas fa-sign-out-alt"></span></span>Cerrar sesión</a>
                                 </div>
                             </div>
@@ -181,7 +184,7 @@ function content_5f54502838ebe0_10793261 (Smarty_Internal_Template $_smarty_tpl)
 ?>
                         <?php }?> 
                     </main>
-                    <footer class="footer section py-5">
+                    <footer class="footer section py-5" style="margin-top: 300px">
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-12 col-lg-6 mb-4 mb-lg-0">
@@ -394,38 +397,64 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 showGrid: true,
                 showLabel: true,
                 labelInterpolationFnc: function(value) {
-                    return '$' + value;
+                    return value;
                 }
             }
             });
     }
 
-    if($('.ct-chart-ranking').length) {
-        //Chart 5
-            new Chartist.Bar('.ct-chart-ranking', {
-            labels: ['Juan Aguilar', 'Margarita Aguilar', 'María Cebreros'],
-            series: [
-                [13570, 11900, 9400],
-                [10900, 9900, 7000]
-            ]
-            }, {
-            low: 0,
-            showArea: true,
-            plugins: [
-                Chartist.plugins.tooltip()
-            ],
-            axisX: {
-                // On the x-axis start means top and end means bottom
-                position: 'end'
-            },
-            axisY: {
-                // On the y-axis start means left and end means right
-                showGrid: false,
-                showLabel: false,
-                offset: 0
-            }
-        });
-    } 
+    <?php if ((isset($_smarty_tpl->tpl_vars['data_clientes_destacados']->value))) {?>
+        if($('.ct-chart-ranking').length) {
+            //Chart 5
+                var clientes = [];
+                clientes.push('<?php echo $_smarty_tpl->tpl_vars['data_clientes_destacados']->value[0]->NOMBRE;?>
+');
+                clientes.push('<?php echo $_smarty_tpl->tpl_vars['data_clientes_destacados']->value[1]->NOMBRE;?>
+');
+                clientes.push('<?php echo $_smarty_tpl->tpl_vars['data_clientes_destacados']->value[2]->NOMBRE;?>
+');
+                
+                var totales = [];
+                totales.push('<?php echo $_smarty_tpl->tpl_vars['data_clientes_destacados']->value[0]->TOTAL;?>
+');
+                totales.push('<?php echo $_smarty_tpl->tpl_vars['data_clientes_destacados']->value[1]->TOTAL;?>
+');
+                totales.push('<?php echo $_smarty_tpl->tpl_vars['data_clientes_destacados']->value[2]->TOTAL;?>
+');
+                
+                var abonos = [];
+                abonos.push('<?php echo $_smarty_tpl->tpl_vars['data_clientes_destacados']->value[0]->ABONADO;?>
+');
+                abonos.push('<?php echo $_smarty_tpl->tpl_vars['data_clientes_destacados']->value[1]->ABONADO;?>
+');
+                abonos.push('<?php echo $_smarty_tpl->tpl_vars['data_clientes_destacados']->value[2]->ABONADO;?>
+');
+
+                new Chartist.Bar('.ct-chart-ranking', {
+                labels: clientes,
+                series: [
+                    totales,
+                    abonos
+                ]
+                }, {
+                low: 0,
+                showArea: true,
+                plugins: [
+                    Chartist.plugins.tooltip()
+                ],
+                axisX: {
+                    // On the x-axis start means top and end means bottom
+                    position: 'end'
+                },
+                axisY: {
+                    // On the y-axis start means left and end means right
+                    showGrid: false,
+                    showLabel: false,
+                    offset: 0
+                }
+            });
+        }
+    <?php }?> 
 <?php echo '</script'; ?>
 >
 </html>

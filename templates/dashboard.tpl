@@ -129,11 +129,7 @@
                                 <span class="fas fa-angle-up text-success"></span>                                   
                                 <span class="text-success font-weight-bold">$10.57%</span>
                             </div>
-                        </div>
-                        <div class="d-flex ml-auto" hidden>
-                            <a href="#" class="btn btn-tertiary btn-sm mr-3">Mensual</a>
-                            <a href="#" class="btn btn-white border-light btn-sm mr-3">Semanal</a>
-                        </div>
+                        </div> 
                     </div>
                     <div class="card-body p-2">
                         <div class="ct-chart-sales-value ct-major-tenth ct-series-b"></div>
@@ -142,15 +138,15 @@
             </div>
         </div>
     </div>
-    <div class="col-4 col-sm-4 col-xl-4 mb-4">
+    <div class="col-12 col-sm-12 col-xl-4 mb-4">
         <div class="card border-light shadow-sm">
-            <div class="card-body d-flex flex-row align-items-center flex-0 border-bottom">
+            <div class="card-body d-flex flex-row align-items-center flex-0 border-bottom" style="min-height: 155px;">
                 <div class="d-block">
                     <div class="h6 font-weight-normal text-gray mb-2">Clientes destacados</div>
-                    <h2 class="h3">$23,312.00</h2>
-                    <div class="small mt-2">                               
+                    <h2 class="h3 moneda">{$total_clientes_destacados}</h2>
+                    <div class="small mt-2" hidden>                               
                         <span class="fas fa-angle-up text-success"></span>                                   
-                        <span class="text-success font-weight-bold">18.2%</span>
+                        <span class="text-success font-weight-bold" >{$porcentaje_clientes_destacados}%</span>
                     </div>
                 </div>
                 <div class="d-block ml-auto">
@@ -160,7 +156,7 @@
                     </div>
                     <div class="d-flex align-items-center text-right">
                         <span class="shape-xs rounded-circle bg-secondary mr-2"></span>
-                        <span class="font-weight-normal small">Importe Pagado</span>
+                        <span class="font-weight-normal small">Total abonado</span>
                     </div>
                 </div>
             </div>

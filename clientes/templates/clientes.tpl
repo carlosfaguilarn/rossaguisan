@@ -42,8 +42,8 @@
         </div>
     </div>
 </div>
-<div class="card card-body border-light shadow-sm table-wrapper table-responsive pt-0">
-    <table class="table table-hover table-search">
+<div class="card card-body border-light shadow-sm table-wrapper table-responsive pt-0 padding-0">
+    <table class="table table-hover table-search tabla">
         <thead>
             <tr>
                 <th class="border-0">ID</th> 
@@ -70,6 +70,7 @@
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="../prestamos/index.php?search=({$cliente->ID}) {$cliente->NOMBRE} {$cliente->APELLIDO}"><span class="fas fa-list mr-2"></span>Ver sus Préstamos</a>
+                                <a class="dropdown-item" href="../prestamos/abonos_cliente.php?cliente={$cliente->ID}"><span class="fas fa-list mr-2"></span>Abonar a todos sus prestamos</a>
                                 <a class="dropdown-item" href="../prestamos/nuevo_prestamo.php?cliente={$cliente->ID}"><span class="fas fa-plus mr-2"></span>Agregar Préstamo</a>
                                 <a class="dropdown-item text-danger" href="#" hidden><span class="fas fa-trash-alt mr-2"></span>Remover</a>
                             </div>
@@ -98,15 +99,20 @@
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[5];
+            td = tr[i].getElementsByTagName("td")[1];
+            td2 = tr[i].getElementsByTagName("td")[2];
             if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
+                txtValue = td.textContent || td.innerText;
+                txtValue2 = td2.textContent || td2.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1
+                    || txtValue2.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
             }       
         }
     }
+
+    myFunction();
 </script>

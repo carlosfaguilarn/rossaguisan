@@ -9,7 +9,7 @@
         </nav>
         <h2 class="h4">Cliente: <span class="text-primary">{$prestamo->APELLIDO} {$prestamo->NOMBRE} </span></h2>
         <p class="mb-0"> 
-            Préstamo de <span class="moneda font-weight-bold">{$prestamo->IMPORTE}</span>. 
+            Préstamo de <span class="moneda font-weight-bold">{$prestamo->IMPORTE}</span>. <br/>
             Saldo actual: <span class="moneda font-weight-bold">{$prestamo->SALDO}</span>
         </p>
     </div>
@@ -50,8 +50,8 @@
         </div>
     </div>
 </div>
-<div class="card card-body border-light shadow-sm table-wrapper table-responsive pt-0">
-    <table class="table table-hover">
+<div class="card card-body border-light shadow-sm table-wrapper table-responsive pt-0 padding-0">
+    <table class="table table-hover tabla">
         <thead>
             <tr>
                 <th class="border-0">ID</th>
@@ -137,7 +137,7 @@
         </div>
         <div class="modal-footer justify-content-end" style="background: #f2f2f2;">
             <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-            <a target="_blank" href="/Rocket/prestamos/pdf_abonos.php?prestamo={$prestamo_id}" type="button" class="btn btn-dark" >Generar PDF</a>
+            <a target="_blank" href="/prestamos/pdf_abonos.php?prestamo={$prestamo_id}" type="button" class="btn btn-dark" >Generar PDF</a>
         </div>
         </div>
         <!-- /.modal-content -->

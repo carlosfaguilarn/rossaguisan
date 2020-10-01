@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2020-09-05 03:23:55
+/* Smarty version 3.1.36, created on 2020-09-12 00:49:43
   from 'C:\xampp\htdocs\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_5f52e8ab048fd5_36509706',
+  'unifunc' => 'content_5f5bff07b0f384_65129363',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3da335e60fac6cfe62561db5244f9af1b2a2e05a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\templates\\index.tpl',
-      1 => 1599269033,
+      1 => 1599864582,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f52e8ab048fd5_36509706 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f5bff07b0f384_65129363 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!--
 
 =========================================================
@@ -43,10 +43,11 @@ function content_5f52e8ab048fd5_36509706 (Smarty_Internal_Template $_smarty_tpl)
 
 <head> 
     <!-- Primary Meta Tags -->
-<title>Rocket - Dashboard</title>
+<title>Rossaguisan - <?php echo $_smarty_tpl->tpl_vars['title']->value;?>
+</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="title" content="Rocket - Dashboard">
+<meta name="title" content="Rossaguisan">
 <meta name="author" content="Themesberg">
 <meta name="description" content="Rocket is a premium SaaS Bootstrap 4 Dashboard template featuring over 27 presentational and technical pages including pricing, support, team, careers and many more.">
 <meta name="keywords" content="bootstrap, bootstrap template, saas website template, saas bootstrap template, saas bootstrap 4 template, saas bootstrap theme, saas bootstrap 4 theme, dashboard, saas dashboard, themesberg" />
@@ -67,11 +68,11 @@ function content_5f52e8ab048fd5_36509706 (Smarty_Internal_Template $_smarty_tpl)
 <meta property="twitter:image" content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/rocket/rocket-preview.jpg">
 
 <!-- Favicon -->
-<link rel="apple-touch-icon" sizes="120x120" href="/lib/assets/img/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/lib/assets/img/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/lib/assets/img/favicon/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/lib/assets/img/favicon/r.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/lib/assets/img/favicon/r.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/lib/assets/img/favicon/r.png">
 <link rel="manifest" href="/lib/assets/img/favicon/site.webmanifest">
-<link rel="mask-icon" href="/lib/assets/img/favicon/safari-pinned-tab.svg" color="#ffffff">
+<link rel="mask-icon" href="/lib/assets/img/favicon/r.svg" color="#ffffff">
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="theme-color" content="#ffffff">
 
@@ -132,10 +133,12 @@ function content_5f52e8ab048fd5_36509706 (Smarty_Internal_Template $_smarty_tpl)
                             <div class="d-flex align-items-center">
                                 
                                 <div class="user-avatar lg-avatar mr-4">
-                                    <img src="/lib/assets/img/team/profile-rosario.jpg" class="card-img-top rounded-circle border-white" alt="Bonnie Green">
+                                    <img src="/lib/assets/img/team/<?php echo $_SESSION['USER_PHOTO'];?>
+" class="card-img-top rounded-circle border-white" alt="Bonnie Green">
                                 </div>
                                 <div class="d-block">
-                                    <h2 class="h6">Hola, Rosario</h2>
+                                    <h2 class="h6">Hola, <?php echo $_SESSION['USER_NOMBRE'];?>
+</h2>
                                     <a href="/logout.php" class="btn btn-secondary btn-xs"><span class="mr-2"><span class="fas fa-sign-out-alt"></span></span>Cerrar sesión</a>
                                 </div>
                             </div>
@@ -181,7 +184,7 @@ function content_5f52e8ab048fd5_36509706 (Smarty_Internal_Template $_smarty_tpl)
 ?>
                         <?php }?> 
                     </main>
-                    <footer class="footer section py-5">
+                    <footer class="footer section py-5" style="margin-top: 300px">
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-12 col-lg-6 mb-4 mb-lg-0">
@@ -394,11 +397,64 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 showGrid: true,
                 showLabel: true,
                 labelInterpolationFnc: function(value) {
-                    return '$' + value;
+                    return value;
                 }
             }
             });
     }
+
+    <?php if ((isset($_smarty_tpl->tpl_vars['data_clientes_destacados']->value))) {?>
+        if($('.ct-chart-ranking').length) {
+            //Chart 5
+                var clientes = [];
+                clientes.push('<?php echo $_smarty_tpl->tpl_vars['data_clientes_destacados']->value[0]->NOMBRE;?>
+');
+                clientes.push('<?php echo $_smarty_tpl->tpl_vars['data_clientes_destacados']->value[1]->NOMBRE;?>
+');
+                clientes.push('<?php echo $_smarty_tpl->tpl_vars['data_clientes_destacados']->value[2]->NOMBRE;?>
+');
+                
+                var totales = [];
+                totales.push('<?php echo $_smarty_tpl->tpl_vars['data_clientes_destacados']->value[0]->TOTAL;?>
+');
+                totales.push('<?php echo $_smarty_tpl->tpl_vars['data_clientes_destacados']->value[1]->TOTAL;?>
+');
+                totales.push('<?php echo $_smarty_tpl->tpl_vars['data_clientes_destacados']->value[2]->TOTAL;?>
+');
+                
+                var abonos = [];
+                abonos.push('<?php echo $_smarty_tpl->tpl_vars['data_clientes_destacados']->value[0]->ABONADO;?>
+');
+                abonos.push('<?php echo $_smarty_tpl->tpl_vars['data_clientes_destacados']->value[1]->ABONADO;?>
+');
+                abonos.push('<?php echo $_smarty_tpl->tpl_vars['data_clientes_destacados']->value[2]->ABONADO;?>
+');
+
+                new Chartist.Bar('.ct-chart-ranking', {
+                labels: clientes,
+                series: [
+                    totales,
+                    abonos
+                ]
+                }, {
+                low: 0,
+                showArea: true,
+                plugins: [
+                    Chartist.plugins.tooltip()
+                ],
+                axisX: {
+                    // On the x-axis start means top and end means bottom
+                    position: 'end'
+                },
+                axisY: {
+                    // On the y-axis start means left and end means right
+                    showGrid: false,
+                    showLabel: false,
+                    offset: 0
+                }
+            });
+        }
+    <?php }?> 
 <?php echo '</script'; ?>
 >
 </html>

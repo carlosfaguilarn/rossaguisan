@@ -20,7 +20,7 @@
 
 <head> 
     <!-- Primary Meta Tags -->
-<title>Rocket - Dashboard</title>
+<title>Rossaguisan - {$title}</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="title" content="Rossaguisan">
@@ -44,11 +44,11 @@
 <meta property="twitter:image" content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/rocket/rocket-preview.jpg">
 
 <!-- Favicon -->
-<link rel="apple-touch-icon" sizes="120x120" href="/lib/assets/img/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/lib/assets/img/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/lib/assets/img/favicon/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/lib/assets/img/favicon/r.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/lib/assets/img/favicon/r.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/lib/assets/img/favicon/r.png">
 <link rel="manifest" href="/lib/assets/img/favicon/site.webmanifest">
-<link rel="mask-icon" href="/lib/assets/img/favicon/safari-pinned-tab.svg" color="#ffffff">
+<link rel="mask-icon" href="/lib/assets/img/favicon/r.svg" color="#ffffff">
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="theme-color" content="#ffffff">
 
@@ -107,10 +107,10 @@
                             <div class="d-flex align-items-center">
                                 
                                 <div class="user-avatar lg-avatar mr-4">
-                                    <img src="/lib/assets/img/team/profile-rosario.jpg" class="card-img-top rounded-circle border-white" alt="Bonnie Green">
+                                    <img src="/lib/assets/img/team/{$smarty.session.USER_PHOTO}" class="card-img-top rounded-circle border-white" alt="Bonnie Green">
                                 </div>
                                 <div class="d-block">
-                                    <h2 class="h6">Hola, Rosario</h2>
+                                    <h2 class="h6">Hola, {$smarty.session.USER_NOMBRE}</h2>
                                     <a href="/logout.php" class="btn btn-secondary btn-xs"><span class="mr-2"><span class="fas fa-sign-out-alt"></span></span>Cerrar sesión</a>
                                 </div>
                             </div>
@@ -155,7 +155,7 @@
                             {include file="$section"}
                         {/if} 
                     </main>
-                    <footer class="footer section py-5">
+                    <footer class="footer section py-5" style="margin-top: 300px">
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-12 col-lg-6 mb-4 mb-lg-0">
@@ -319,37 +319,54 @@
                 showGrid: true,
                 showLabel: true,
                 labelInterpolationFnc: function(value) {
-                    return '$' + value;
+                    return value;
                 }
             }
             });
     }
 
-    if($('.ct-chart-ranking').length) {
-        //Chart 5
-            new Chartist.Bar('.ct-chart-ranking', {
-            labels: ['Juan Aguilar', 'Margarita Aguilar', 'María Cebreros'],
-            series: [
-                [13570, 11900, 9400],
-                [10900, 9900, 7000]
-            ]
-            }, {
-            low: 0,
-            showArea: true,
-            plugins: [
-                Chartist.plugins.tooltip()
-            ],
-            axisX: {
-                // On the x-axis start means top and end means bottom
-                position: 'end'
-            },
-            axisY: {
-                // On the y-axis start means left and end means right
-                showGrid: false,
-                showLabel: false,
-                offset: 0
-            }
-        });
-    } 
+    {if isset($data_clientes_destacados)}
+        if($('.ct-chart-ranking').length) {
+            //Chart 5
+                var clientes = [];
+                clientes.push('{$data_clientes_destacados[0]->NOMBRE}');
+                clientes.push('{$data_clientes_destacados[1]->NOMBRE}');
+                clientes.push('{$data_clientes_destacados[2]->NOMBRE}');
+                
+                var totales = [];
+                totales.push('{$data_clientes_destacados[0]->TOTAL}');
+                totales.push('{$data_clientes_destacados[1]->TOTAL}');
+                totales.push('{$data_clientes_destacados[2]->TOTAL}');
+                
+                var abonos = [];
+                abonos.push('{$data_clientes_destacados[0]->ABONADO}');
+                abonos.push('{$data_clientes_destacados[1]->ABONADO}');
+                abonos.push('{$data_clientes_destacados[2]->ABONADO}');
+
+                new Chartist.Bar('.ct-chart-ranking', {
+                labels: clientes,
+                series: [
+                    totales,
+                    abonos
+                ]
+                }, {
+                low: 0,
+                showArea: true,
+                plugins: [
+                    Chartist.plugins.tooltip()
+                ],
+                axisX: {
+                    // On the x-axis start means top and end means bottom
+                    position: 'end'
+                },
+                axisY: {
+                    // On the y-axis start means left and end means right
+                    showGrid: false,
+                    showLabel: false,
+                    offset: 0
+                }
+            });
+        }
+    {/if} 
 </script>
 </html>

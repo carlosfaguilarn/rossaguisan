@@ -2,6 +2,9 @@
 /**
  * CLASE QUE CONTIENE LOS MÉTODOS PARA DEL MÓDULO PRÉSTAMOS
  */
+
+use PhpParser\Node\Expr\Cast\Object_;
+
 include_once '../conexion/conexion.class.php';
 include_once '../clientes/class.clientes.php';
 
@@ -106,6 +109,57 @@ class Prestamos{
             echo("Error!");
             return "Error en la consulta";  
         }  
+    }   
+
+    function GetAbonosCliente($cliente){  
+        try{  
+            $bd = new BD;
+            $conn = $bd->conectar();  
+
+            if (!$conn) {
+                echo 'No pudo conectarse a mysql';
+                exit;
+            }
+             
+            $sql = "
+                SELECT prestamos.*, 
+                    clientes.NOMBRE, 
+                    @prestamo := prestamos.ID,
+                    (
+                        SELECT 
+                        IMPORTE - 
+                        -- Calcula el total de abonos del préstamo
+                        if(sum(abonos.ABONO) IS NULL, 0, sum(abonos.ABONO)) AS 'SALDO'	
+                        FROM `prestamos` 
+                        
+                        LEFT JOIN abonos on abonos.PRESTAMO_ID = prestamos.ID
+                        WHERE prestamos.ID = @prestamo
+                    ) AS SALDO 
+                FROM prestamos 
+                LEFT JOIN clientes ON clientes.ID = prestamos.CLIENTE_ID  
+                WHERE prestamos.CLIENTE_ID = $cliente
+            ";
+            
+            $resultado = mysqli_query($conn, $sql);
+            
+            if (!$resultado) {
+                echo "Error de BD, no se pudo consultar la base de datos\n";
+                echo "Error MySQL: " . mysqli_error($conn);
+                exit;
+            }
+
+            $array = array();  
+
+            while($row = $resultado->fetch_object()){
+                $array[] = $row; 
+            }  
+            
+            return $array;  
+        }  
+        catch(Exception $e){  
+            echo("Error!");
+            return "Error en la consulta";  
+        }  
     }  
  
     function RegistrarAbono($DATA){  
@@ -131,7 +185,7 @@ class Prestamos{
             
             if (!$resultado) {
                 echo "Error de BD, no se pudo consultar la base de datos\n";
-                echo "Error MySQL: " . mysqli_error();
+                echo "Error MySQL: " . mysqli_error($conn);
                 exit;
             }
  
@@ -263,11 +317,13 @@ class Prestamos{
                     'N'
                 )";
             
-            $resultado = mysqli_query($conn, $sql);
+            $resultado = new stdClass;
+            $resultado->valida = mysqli_query($conn, $sql);
+            $resultado->inserted = mysqli_insert_id($conn);
             
             if (!$resultado) {
                 echo "Error de BD, no se pudo consultar la base de datos\n";
-                echo "Error MySQL: " . mysqli_error();
+                echo "Error MySQL: " . mysqli_error($conn);
                 exit;
             }
  

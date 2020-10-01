@@ -1,8 +1,10 @@
 <?php
 // include autoloader
 require_once '../lib/dompdf/autoload.inc.php';
+//require_once '../lib/imagick';
 include_once('../sesion.php');
 use Dompdf\Dompdf;
+//use Imagick\Imagick;
 
 include_once('class.prestamos.php'); 
 $obj_prestamos = new Prestamos;
@@ -109,7 +111,6 @@ $dompdf->setPaper('letter', 'portrait');
 // Render the HTML as PDF
 $dompdf->render();
 
-$filename = "TARJETA_".$prestamo->APELLIDO." ".$prestamo->NOMBRE;
-
-// Output the generated PDF to Browser
-$dompdf->stream("$filename.pdf", array("Attachment" => false));
+$filename = "TARJETA";
+ // Output the generated PDF to Browser
+$file = $dompdf->stream($filename);

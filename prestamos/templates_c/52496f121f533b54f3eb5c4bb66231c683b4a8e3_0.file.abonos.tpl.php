@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2020-09-04 19:03:00
+/* Smarty version 3.1.36, created on 2020-09-18 16:52:22
   from 'C:\xampp\htdocs\prestamos\templates\abonos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_5f5273446f4b31_76869938',
+  'unifunc' => 'content_5f64c9a6a7e030_00894057',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '52496f121f533b54f3eb5c4bb66231c683b4a8e3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\prestamos\\templates\\abonos.tpl',
-      1 => 1598568240,
+      1 => 1600440737,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f5273446f4b31_76869938 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f64c9a6a7e030_00894057 (Smarty_Internal_Template $_smarty_tpl) {
 ?> 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
     <div class="d-block mb-4 mb-md-0">
@@ -36,7 +36,7 @@ function content_5f5273446f4b31_76869938 (Smarty_Internal_Template $_smarty_tpl)
  </span></h2>
         <p class="mb-0"> 
             Préstamo de <span class="moneda font-weight-bold"><?php echo $_smarty_tpl->tpl_vars['prestamo']->value->IMPORTE;?>
-</span>. 
+</span>. <br/>
             Saldo actual: <span class="moneda font-weight-bold"><?php echo $_smarty_tpl->tpl_vars['prestamo']->value->SALDO;?>
 </span>
         </p>
@@ -80,8 +80,8 @@ function content_5f5273446f4b31_76869938 (Smarty_Internal_Template $_smarty_tpl)
         </div>
     </div>
 </div>
-<div class="card card-body border-light shadow-sm table-wrapper table-responsive pt-0">
-    <table class="table table-hover">
+<div class="card card-body border-light shadow-sm table-wrapper table-responsive pt-0 padding-0">
+    <table class="table table-hover tabla">
         <thead>
             <tr>
                 <th class="border-0">ID</th>
@@ -194,7 +194,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </div>
         <div class="modal-footer justify-content-end" style="background: #f2f2f2;">
             <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-            <a target="_blank" href="/Rocket/prestamos/pdf_abonos.php?prestamo=<?php echo $_smarty_tpl->tpl_vars['prestamo_id']->value;?>
+            <a target="_blank" href="/prestamos/pdf_abonos.php?prestamo=<?php echo $_smarty_tpl->tpl_vars['prestamo_id']->value;?>
 " type="button" class="btn btn-dark" >Generar PDF</a>
         </div>
         </div>

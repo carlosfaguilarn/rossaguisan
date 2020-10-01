@@ -24,7 +24,7 @@
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="birthday">Cantidad</label>
-                            <input type="number" class="form-control flatpickr-input" name="abono" d="birthday" data-toggle="date" placeholder="" required
+                            <input type="number" class="form-control flatpickr-input" name="abono" d="birthday" data-toggle="date" placeholder="" required value="{$prestamo->ABONOS}"
                             onkeyup=" 
                                 var etiqueta = document.getElementById('saldo');
                                 var saldo = {$prestamo->SALDO} - this.value;
@@ -35,7 +35,7 @@
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="birthday">Fecha</label> 
-                            <input type="text" name="fecha" class="form-control datepicker">
+                            <input type="text" name="fecha" class="form-control datepicker hoy">
                         </div>
                     </div> 
                 </div>
@@ -49,7 +49,7 @@
                 </div>
                         
                 <div class="mt-3">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="submit" name="guardar_abono" class="btn btn-primary">Guardar Abono</button>
                 </div>
             </form>
         </div>

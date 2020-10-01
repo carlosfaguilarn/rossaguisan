@@ -2,7 +2,6 @@
     width: 100%;
 }
 
-
 th, td{
     text-align: center !important;
 }
@@ -13,5 +12,24 @@ th, td{
 }
 
 .tarjeta-abono tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f2f2f2 !important;
+}
+
+.tabla th, .tabla td{
+    border: 0.1px solid #cccccc;
+    max-height: 0px;
+}
+
+.tabla tr:nth-child(even) {
+    background-color: #f2f2f2 !important;
+}
+
+.tabla thead{
+    background: #717171; 
+    color: #FFFFFF;
+    overflow: hidden;
+}
+
+.padding-0{
+    padding: 0 !important;
 }

@@ -5,12 +5,9 @@
     $title = "Dashboard";
     $html = new Smarty;
     $obj_dashboard = new Dashboard;
-
     $data = $obj_dashboard->GetDashboard(); 
-
-     
+    
     $fecha_actual = getdate();
-
     $firstDay = date('Y-m-01');
     $hoy = date('Y-m-d');
     $lastDay = date("Y-m-t"); 
@@ -18,10 +15,7 @@
     $fechaMesPasadoLast = date("Y-m-t", strtotime($fechaMesPasadoFirst));
 
     $data_anual = $obj_dashboard->GetIngresosAnual();
-    //print_r($data_anual);
-   
-    //$ingresos = $obj_dashboard->GetIngresosMes('2020-08-01', '2020-08-31');  
-    //$mes_pasado = $obj_dashboard->GetIngresosMes('2020-07-01', '2020-07-31');  
+       
     $ingresos = $obj_dashboard->GetIngresosMes($firstDay, $lastDay);  
     $mes_pasado = $obj_dashboard->GetIngresosMes($fechaMesPasadoFirst, $fechaMesPasadoLast);  
     $ingresos['UTILIDAD_PORCENTAJE'] = round(($ingresos['UTILIDAD_MES'] / $mes_pasado['UTILIDAD_MES'] * 100-100), 2);
@@ -44,10 +38,21 @@
         $statusAbonos['icon'] = "down";
         $ingresos['ABONOS_PORCENTAJE'] *= -1;
     }
+    $data_clientes_destacados = $obj_dashboard->GetClientesDestacados();
 
-    $html->assign('title', $title);   
+    $total_clientes_destacados = 
+        $data_clientes_destacados[0]->TOTAL + 
+        $data_clientes_destacados[1]->TOTAL + 
+        $data_clientes_destacados[2]->TOTAL;
+
+    $porcentaje_clientes_destacados = $total_clientes_destacados / $data['saldos'] * 100;
+
+    $html->assign('title', $title);    
     $html->assign('data', $data);   
     $html->assign('data_anual', $data_anual);   
+    $html->assign('data_clientes_destacados', $data_clientes_destacados);   
+    $html->assign('total_clientes_destacados', $total_clientes_destacados);   
+    $html->assign('porcentaje_clientes_destacados', $total_clientes_destacados);   
     $html->assign('ingresos', $ingresos);   
     $html->assign('statusUtilidad', $statusUtilidad);   
     $html->assign('statusAbonos', $statusAbonos);   

@@ -40,7 +40,9 @@ class Dashboard{
                     ) A) AS 'saldos',
                     
                     -- Capital Rossaguisan en cuentas bancarias
-                    (SELECT valor FROM `capital` WHERE ID='1') as 'capital_rossaguisan'
+                    (SELECT valor FROM `capital` WHERE ID='1') as 'capital_rossaguisan',
+
+                    COUNT(prestamos.ID) AS 'prestamos'
                 FROM `prestamos`
             ";
             $resultado = mysqli_query($conn, $sql);
@@ -158,4 +160,58 @@ class Dashboard{
             return "Error en la consulta";  
         }  
     }
+
+    function GetClientesDestacados(){  
+        try{  
+            $bd = new BD;
+            $conn = $bd->conectar();  
+
+            if (!$conn) {
+                echo 'No pudo conectarse a mysql';
+                exit;
+            }
+             
+            $sql = "
+                SELECT 
+                CLIENTE_ID,
+                SUM(IMPORTE) AS TOTAL,  
+                CONCAT(clientes.NOMBRE,' ', clientes.APELLIDO) AS NOMBRE,
+                @cliente := CLIENTE_ID,
+                    
+                    (SELECT SUM(ABONO) FROM abonos 
+                        LEFT JOIN prestamos ON prestamos.ID = abonos.PRESTAMO_ID
+                        LEFT JOIN clientes ON clientes.ID = prestamos.CLIENTE_ID
+                        WHERE clientes.ID = @cliente
+                        ) AS 'ABONADO'
+                        
+                FROM prestamos 
+                    
+                LEFT JOIN clientes ON clientes.ID = prestamos.CLIENTE_ID
+                
+                GROUP BY CLIENTE_ID 
+                ORDER BY SUM(IMPORTE) DESC 
+                LIMIT 3
+            ";
+            
+            $resultado = mysqli_query($conn, $sql);
+            
+            if (!$resultado) {
+                echo "Error de BD, no se pudo consultar la base de datos\n";
+                echo "Error MySQL: " . mysqli_error($conn);
+                exit;
+            }
+
+            $array = array();  
+
+            while($row = $resultado->fetch_object()){
+                $array[] = $row; 
+            }  
+            
+            return $array;  
+        }  
+        catch(Exception $e){  
+            echo("Error!");
+            return "Error en la consulta";  
+        }  
+    }   
 }

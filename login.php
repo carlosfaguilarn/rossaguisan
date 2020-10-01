@@ -15,6 +15,7 @@
             $_SESSION['USER_ID'] = $user->id;
             $_SESSION['USER_USUARIO'] = $user->usuario;
             $_SESSION['USER_NOMBRE'] = $user->nombre;
+            $_SESSION['USER_PHOTO'] = $user->foto;
             header("Location: /");
         }else{
             $html->assign('error_message', 'Usuario o contraseña incorrectos, intente de nuevo');

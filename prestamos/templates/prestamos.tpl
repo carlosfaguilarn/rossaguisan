@@ -11,9 +11,9 @@
         <p class="mb-0">Listado de préstamos registrados.</p>
     </div>
     <div class="btn-toolbar mb-2 mb-md-0">
+        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='nuevo_prestamo.php'">Nuevo préstamo</button>
         <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='nuevo_prestamo.php'">Nuevo préstamo</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.open('pdf_prestamos.php', '_blank')">Exportar</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.open('pdf_prestamos.php', '_blank')" hidden>Exportar</button>
         </div>
     </div>
 </div>
@@ -43,8 +43,8 @@
         </div>
     </div>
 </div>
-<div class="card card-body border-light shadow-sm table-wrapper table-responsive pt-0">
-    <table class="table table-hover table-search">
+<div class="card card-body border-light shadow-sm table-wrapper table-responsive pt-0 padding-0">
+    <table class="table table-hover table-search tabla">
         <thead>
             <tr>
                 <th class="border-0">ID</th> 

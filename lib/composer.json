@@ -1,0 +1,9 @@
+{
+    "require": {
+        "slim/slim": "4.0",
+        "slim/http": "^1.0",
+        "tecnickcom/tcpdf": "^6.3",
+        "intervention/image": "^2.5",
+        "calcinai/php-imagick": "^0.1.2"
+    }
+}

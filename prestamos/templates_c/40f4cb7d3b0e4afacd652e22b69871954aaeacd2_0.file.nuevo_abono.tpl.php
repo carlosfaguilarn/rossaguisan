@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2020-09-05 02:43:15
+/* Smarty version 3.1.36, created on 2020-09-18 05:35:41
   from 'C:\xampp\htdocs\prestamos\templates\nuevo_abono.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_5f52df2332eca1_32972468',
+  'unifunc' => 'content_5f642b0dea3cc4_16521679',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '40f4cb7d3b0e4afacd652e22b69871954aaeacd2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\prestamos\\templates\\nuevo_abono.tpl',
-      1 => 1598931749,
+      1 => 1600400140,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f52df2332eca1_32972468 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f642b0dea3cc4_16521679 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="row" style="margin-top: 30px"> 
     <div class="col-12 col-xl-8">
         <div class="d-block mb-4 mb-md-0">
@@ -55,7 +55,8 @@ function content_5f52df2332eca1_32972468 (Smarty_Internal_Template $_smarty_tpl)
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="birthday">Cantidad</label>
-                            <input type="number" class="form-control flatpickr-input" name="abono" d="birthday" data-toggle="date" placeholder="" required
+                            <input type="number" class="form-control flatpickr-input" name="abono" d="birthday" data-toggle="date" placeholder="" required value="<?php echo $_smarty_tpl->tpl_vars['prestamo']->value->ABONOS;?>
+"
                             onkeyup=" 
                                 var etiqueta = document.getElementById('saldo');
                                 var saldo = <?php echo $_smarty_tpl->tpl_vars['prestamo']->value->SALDO;?>
@@ -67,7 +68,7 @@ function content_5f52df2332eca1_32972468 (Smarty_Internal_Template $_smarty_tpl)
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="birthday">Fecha</label> 
-                            <input type="text" name="fecha" class="form-control datepicker">
+                            <input type="text" name="fecha" class="form-control datepicker hoy">
                         </div>
                     </div> 
                 </div>

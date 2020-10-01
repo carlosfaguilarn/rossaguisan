@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2020-09-04 19:12:34
+/* Smarty version 3.1.36, created on 2020-09-12 01:05:05
   from 'C:\xampp\htdocs\clientes\templates\clientes.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_5f527582b4b633_77172296',
+  'unifunc' => 'content_5f5c02a10b53f6_27540373',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b067952f69f18381a4648bb3713a499c3a3a437c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\clientes\\templates\\clientes.tpl',
-      1 => 1599239553,
+      1 => 1599864003,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f527582b4b633_77172296 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f5c02a10b53f6_27540373 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
     <div class="d-block mb-4 mb-md-0">
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
@@ -65,8 +65,8 @@ function content_5f527582b4b633_77172296 (Smarty_Internal_Template $_smarty_tpl)
         </div>
     </div>
 </div>
-<div class="card card-body border-light shadow-sm table-wrapper table-responsive pt-0">
-    <table class="table table-hover table-search">
+<div class="card card-body border-light shadow-sm table-wrapper table-responsive pt-0 padding-0">
+    <table class="table table-hover table-search tabla">
         <thead>
             <tr>
                 <th class="border-0">ID</th> 
@@ -104,6 +104,8 @@ $_smarty_tpl->tpl_vars['cliente']->do_else = false;
 ) <?php echo $_smarty_tpl->tpl_vars['cliente']->value->NOMBRE;?>
  <?php echo $_smarty_tpl->tpl_vars['cliente']->value->APELLIDO;?>
 "><span class="fas fa-list mr-2"></span>Ver sus Préstamos</a>
+                                <a class="dropdown-item" href="../prestamos/abonos_cliente.php?cliente=<?php echo $_smarty_tpl->tpl_vars['cliente']->value->ID;?>
+"><span class="fas fa-list mr-2"></span>Abonar a todos sus prestamos</a>
                                 <a class="dropdown-item" href="../prestamos/nuevo_prestamo.php?cliente=<?php echo $_smarty_tpl->tpl_vars['cliente']->value->ID;?>
 "><span class="fas fa-plus mr-2"></span>Agregar Préstamo</a>
                                 <a class="dropdown-item text-danger" href="#" hidden><span class="fas fa-trash-alt mr-2"></span>Remover</a>
@@ -138,17 +140,22 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[5];
+            td = tr[i].getElementsByTagName("td")[1];
+            td2 = tr[i].getElementsByTagName("td")[2];
             if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
+                txtValue = td.textContent || td.innerText;
+                txtValue2 = td2.textContent || td2.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1
+                    || txtValue2.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
             }       
         }
     }
+
+    myFunction();
 <?php echo '</script'; ?>
 ><?php }
 }

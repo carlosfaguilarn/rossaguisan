@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2020-09-06 04:56:39
+/* Smarty version 3.1.36, created on 2020-09-07 03:41:43
   from 'C:\xampp\htdocs\templates\dashboard.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_5f544fe7bc9067_32435576',
+  'unifunc' => 'content_5f558fd7bd9e31_37367808',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'eedc767850c478c260a0bfcd62a4491ee62300cd' => 
     array (
       0 => 'C:\\xampp\\htdocs\\templates\\dashboard.tpl',
-      1 => 1599360999,
+      1 => 1599442881,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f544fe7bc9067_32435576 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f558fd7bd9e31_37367808 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
     <div class="btn-toolbar" style="margin-bottom: 10px;">
         <button class="btn btn-primary btn-sm mr-2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" hidden>
@@ -170,11 +170,7 @@ function content_5f544fe7bc9067_32435576 (Smarty_Internal_Template $_smarty_tpl)
                                 <span class="fas fa-angle-up text-success"></span>                                   
                                 <span class="text-success font-weight-bold">$10.57%</span>
                             </div>
-                        </div>
-                        <div class="d-flex ml-auto" hidden>
-                            <a href="#" class="btn btn-tertiary btn-sm mr-3">Mensual</a>
-                            <a href="#" class="btn btn-white border-light btn-sm mr-3">Semanal</a>
-                        </div>
+                        </div> 
                     </div>
                     <div class="card-body p-2">
                         <div class="ct-chart-sales-value ct-major-tenth ct-series-b"></div>
@@ -183,15 +179,17 @@ function content_5f544fe7bc9067_32435576 (Smarty_Internal_Template $_smarty_tpl)
             </div>
         </div>
     </div>
-    <div class="col-4 col-sm-4 col-xl-4 mb-4">
+    <div class="col-12 col-sm-12 col-xl-4 mb-4">
         <div class="card border-light shadow-sm">
-            <div class="card-body d-flex flex-row align-items-center flex-0 border-bottom">
+            <div class="card-body d-flex flex-row align-items-center flex-0 border-bottom" style="min-height: 155px;">
                 <div class="d-block">
                     <div class="h6 font-weight-normal text-gray mb-2">Clientes destacados</div>
-                    <h2 class="h3">$23,312.00</h2>
-                    <div class="small mt-2">                               
+                    <h2 class="h3 moneda"><?php echo $_smarty_tpl->tpl_vars['total_clientes_destacados']->value;?>
+</h2>
+                    <div class="small mt-2" hidden>                               
                         <span class="fas fa-angle-up text-success"></span>                                   
-                        <span class="text-success font-weight-bold">18.2%</span>
+                        <span class="text-success font-weight-bold" ><?php echo $_smarty_tpl->tpl_vars['porcentaje_clientes_destacados']->value;?>
+%</span>
                     </div>
                 </div>
                 <div class="d-block ml-auto">
@@ -201,7 +199,7 @@ function content_5f544fe7bc9067_32435576 (Smarty_Internal_Template $_smarty_tpl)
                     </div>
                     <div class="d-flex align-items-center text-right">
                         <span class="shape-xs rounded-circle bg-secondary mr-2"></span>
-                        <span class="font-weight-normal small">Importe Pagado</span>
+                        <span class="font-weight-normal small">Total abonado</span>
                     </div>
                 </div>
             </div>

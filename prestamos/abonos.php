@@ -9,12 +9,23 @@ $html = new Smarty;
 $obj_prestamos = new Prestamos;
 
 $title = "Abonos";
- 
-/** Registrar abono si viene info en POST */
-if(isset($_POST['prestamo_id'])){
+
+/** Registrar un abono del cliente */
+if(isset($_POST['guardar_abono'])){
     $obj_prestamos->RegistrarAbono($_POST);
     $html->assign('alerta_mensaje', "¡Abono registrado correctamente!"); 
 }
+
+/** Guardar varios abonos de un cliente al mismo tiempo */
+if(isset($_POST['guardar_varios'])){ 
+    $contador = 0;
+    $nombre_cliente = $_POST['nombre'];
+    for($i=0; $i<count($_POST['abono']); $i++){
+        $obj_prestamos->RegistrarAbono($_POST[$i]);
+        $contador++;
+    }
+    $html->assign('alerta_mensaje', "¡Se registraron $contador abono(s) del cliente $nombre_cliente!"); 
+} 
 
 /** Obtener listado de abonos si viene prestamo en GET */
 if(isset($_GET['prestamo'])){

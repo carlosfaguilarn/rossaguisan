@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2020-09-04 17:18:31
+/* Smarty version 3.1.36, created on 2020-09-18 16:54:25
   from 'C:\xampp\htdocs\prestamos\templates\prestamos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_5f525ac7f06cd5_37261008',
+  'unifunc' => 'content_5f64ca21385442_86453150',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'df697a5e1b54852173a4d13e868dadda5fa7138a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\prestamos\\templates\\prestamos.tpl',
-      1 => 1598978769,
+      1 => 1600440840,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f525ac7f06cd5_37261008 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f64ca21385442_86453150 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
     <div class="d-block mb-4 mb-md-0">
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
@@ -34,9 +34,9 @@ function content_5f525ac7f06cd5_37261008 (Smarty_Internal_Template $_smarty_tpl)
         <p class="mb-0">Listado de préstamos registrados.</p>
     </div>
     <div class="btn-toolbar mb-2 mb-md-0">
+        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='nuevo_prestamo.php'">Nuevo préstamo</button>
         <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='nuevo_prestamo.php'">Nuevo préstamo</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.open('pdf_prestamos.php', '_blank')">Exportar</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.open('pdf_prestamos.php', '_blank')" hidden>Exportar</button>
         </div>
     </div>
 </div>
@@ -68,8 +68,8 @@ echo $_smarty_tpl->tpl_vars['search']->value;
         </div>
     </div>
 </div>
-<div class="card card-body border-light shadow-sm table-wrapper table-responsive pt-0">
-    <table class="table table-hover table-search">
+<div class="card card-body border-light shadow-sm table-wrapper table-responsive pt-0 padding-0">
+    <table class="table table-hover table-search tabla">
         <thead>
             <tr>
                 <th class="border-0">ID</th> 
