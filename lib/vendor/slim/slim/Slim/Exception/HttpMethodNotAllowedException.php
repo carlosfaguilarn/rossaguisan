@@ -1,13 +1,16 @@
 <?php
+
 /**
  * Slim Framework (https://slimframework.com)
  *
  * @license https://github.com/slimphp/Slim/blob/4.x/LICENSE.md (MIT License)
  */
 
-declare(strict_types=1);
+
 
 namespace Slim\Exception;
+
+use function implode;
 
 class HttpMethodNotAllowedException extends HttpSpecializedException
 {
@@ -36,6 +39,7 @@ class HttpMethodNotAllowedException extends HttpSpecializedException
     public function setAllowedMethods(array $methods): HttpMethodNotAllowedException
     {
         $this->allowedMethods = $methods;
+        $this->message = 'Method not allowed. Must be one of: ' . implode(', ', $methods);
         return $this;
     }
 }

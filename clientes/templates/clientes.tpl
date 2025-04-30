@@ -58,8 +58,7 @@
                 <tr style="cursor: pointer;">
                     <td>{$cliente->ID}</td> 
                     <td><span class="font-weight-normal">{$cliente->APELLIDO} </span></td> 
-                    <td><span class="font-weight-normal">{$cliente->NOMBRE} </span></td> 
-                   
+                    <td><span class="font-weight-normal">{$cliente->NOMBRE} </span></td>                    
                     <td>
                         <div class="btn-group">
                             <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

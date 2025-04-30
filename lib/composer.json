@@ -1,9 +1,18 @@
 {
     "require": {
-        "slim/slim": "4.0",
+        "slim/slim": "^4.5",
         "slim/http": "^1.0",
         "tecnickcom/tcpdf": "^6.3",
         "intervention/image": "^2.5",
-        "calcinai/php-imagick": "^0.1.2"
+        "calcinai/php-imagick": "^0.1.2",
+        "firebase/php-jwt": "^5.2",
+        "illuminate/database": "~5.1",
+        "conekta/conekta-php": "^4.3",
+		"tuupola/slim-cors": "^1.0"
+    },
+    "autoload": {
+	"psr-4": {
+            "Acredito\\": "../apiv3/"
+    	}
     }
 }

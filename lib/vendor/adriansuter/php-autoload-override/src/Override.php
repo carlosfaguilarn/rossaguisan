@@ -6,7 +6,7 @@
  * @license https://github.com/adriansuter/php-autoload-override/blob/master/LICENSE.md (MIT License)
  */
 
-declare(strict_types=1);
+
 
 namespace AdrianSuter\Autoload\Override;
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2020-09-18 16:54:25
+/* Smarty version 3.1.36, created on 2020-10-08 02:13:27
   from 'C:\xampp\htdocs\prestamos\templates\prestamos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_5f64ca21385442_86453150',
+  'unifunc' => 'content_5f7e59a7355343_77043332',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'df697a5e1b54852173a4d13e868dadda5fa7138a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\prestamos\\templates\\prestamos.tpl',
-      1 => 1600440840,
+      1 => 1602116000,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f64ca21385442_86453150 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7e59a7355343_77043332 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
     <div class="d-block mb-4 mb-md-0">
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
@@ -30,6 +30,7 @@ function content_5f64ca21385442_86453150 (Smarty_Internal_Template $_smarty_tpl)
                 <li class="breadcrumb-item active" aria-current="page">Abonos</li>
             </ol>
         </nav>
+        <img src = '/lib/assets/img/icons/invoice.png' />
         <h2 class="h4">Préstamos</h2>
         <p class="mb-0">Listado de préstamos registrados.</p>
     </div>

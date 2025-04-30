@@ -125,6 +125,10 @@ class HTML extends Generator
                         color: #000000;
                     }
                 </style>'.PHP_EOL;
+
+
+
+
         echo ' </head>'.PHP_EOL;
         echo ' <body>'.PHP_EOL;
         echo "  <h1>$standard Coding Standards</h1>".PHP_EOL;

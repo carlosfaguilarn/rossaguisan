@@ -40,4 +40,71 @@ class Usuarios{
             return "Error en la consulta";  
         }  
     }   
+
+    function GetUsuarios(){  
+        try{  
+            $bd = new BD;
+            $conn = $bd->conectar();  
+
+            if (!$conn) {
+                echo 'No pudo conectarse a mysql';
+                exit;
+            }
+             
+            $sql = "
+                SELECT * FROM usuarios
+            ";
+            
+            $resultado = mysqli_query($conn, $sql);
+            
+            if (!$resultado) {
+                echo "Error de BD, no se pudo consultar la base de datos\n";
+                echo "Error MySQL: " . mysqli_error($conn);
+                exit;
+            }
+
+            $array = array();  
+
+            while($row = $resultado->fetch_object()){
+                $array[] = $row; 
+            }  
+            
+            return $array;  
+        }  
+        catch(Exception $e){  
+            echo("Error!");
+            return "Error en la consulta";  
+        }  
+    }  
+
+    function GetUsuario($id){  
+        try{  
+            $bd = new BD;
+            $conn = $bd->conectar();  
+
+            if (!$conn) {
+                echo 'No pudo conectarse a mysql';
+                exit;
+            }
+             
+            $sql = "
+                SELECT * FROM usuarios 
+                WHERE ID = '$id'
+            ";
+            
+            $resultado = mysqli_query($conn, $sql);
+            
+            if (!$resultado) {
+                echo "Error de BD, no se pudo consultar la base de datos\n";
+                echo "Error MySQL: " . mysqli_error($conn);
+                exit;
+            }
+            
+            return $resultado->fetch_object();  
+        }  
+        catch(Exception $e){  
+            echo("Error!");
+            return "Error en la consulta";  
+        }  
+    }  
 }

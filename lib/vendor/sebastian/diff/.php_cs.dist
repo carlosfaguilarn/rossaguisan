@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php 
 $header = <<<'EOF'
 This file is part of sebastian/diff.
 

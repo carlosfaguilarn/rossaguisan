@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php 
 /*
  * This file is part of PHPUnit.
  *
@@ -46,6 +46,10 @@ final class HtmlResultPrinter extends ResultPrinter
                 margin-bottom: 1em;
             }
         </style>
+
+
+
+
     </head>
     <body>
 EOT;

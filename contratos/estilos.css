@@ -1,0 +1,68 @@
+html, body{
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1b4a98;
+} 
+.contenedor{
+    width: auto;
+    height: auto;
+}
+.title{
+    text-align: center;
+    font-size: 50px;
+    color: WHITE;
+}
+.datos{
+    text-align: left;
+    color: white;
+    font-size: 30px;
+    line-height: 10px;
+}
+canvas {  
+    background-color: #FFFFFF;
+} 
+.button{
+    width: 50%;
+    height: 95px;
+    text-align: center;
+    font-size: 55px;
+    text-transform: capitalize;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 11px;
+    line-height: 95px;
+}
+.guardar{ 
+    color: #FFFFFF;
+}
+.borrar{ 
+    color: #dc3545;
+}
+.footer{
+    width: 100%;
+    display: flex;
+    margin-top: 40px;
+}
+
+.ya_firmado{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+}
+
+.ya_firmado > p{
+    color: black;
+    text-align: center;
+    font-size: 45px;
+    height: auto;
+    border-top: 2px solid green;
+    border-bottom: 2px solid green;
+    padding: 30px;
+    padding-left: 60px;
+    padding-right: 60px;
+    background-color: #b7f1b1cf;
+    font-weight: bold;
+    font-family: system-ui;
+}

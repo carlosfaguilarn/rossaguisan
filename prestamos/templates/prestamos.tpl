@@ -7,6 +7,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Abonos</li>
             </ol>
         </nav>
+        <img src = '/lib/assets/img/icons/invoice.png' />
         <h2 class="h4">Préstamos</h2>
         <p class="mb-0">Listado de préstamos registrados.</p>
     </div>

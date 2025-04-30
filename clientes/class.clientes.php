@@ -41,6 +41,44 @@ class Clientes{
             return "Error en la consulta";  
         }  
     }   
+    function GetClientesActivos($socio_id){  
+        try{  
+            $bd = new BD;
+            $conn = $bd->conectar();  
+
+            if (!$conn) {
+                echo 'No pudo conectarse a mysql';
+                exit;
+            }
+             
+            $sql = "
+                SELECT prestamos.*, clientes.NOMBRE, clientes.APELLIDO FROM prestamos
+                LEFT JOIN clientes ON clientes.ID = prestamos.CLIENTE_ID
+                WHERE prestamos.FINALIZO = 'N' and prestamos.SOCIO_ID = $socio_id
+                GROUP BY prestamos.CLIENTE_ID  
+            ";
+            
+            $resultado = mysqli_query($conn, $sql);
+            
+            if (!$resultado) {
+                echo "Error de BD, no se pudo consultar la base de datos\n";
+                echo "Error MySQL: " . mysqli_error($conn);
+                exit;
+            }
+
+            $array = array();  
+
+            while($row = $resultado->fetch_object()){
+                $array[] = $row; 
+            }  
+            
+            return $array;  
+        }  
+        catch(Exception $e){  
+            echo("Error!");
+            return "Error en la consulta";  
+        }  
+    }   
 
     function GetCliente($id){  
         try{  

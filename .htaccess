@@ -1,4 +1,11 @@
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule api/(.*)$ /api/index.php
-RewriteRule prestamos/nuevo$ /prestamos/nuevo_prestamo.php
+RewriteRule apiv3/(.*)$ /apiv3/index.php
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php71” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php71___lsphp .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

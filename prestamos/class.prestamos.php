@@ -12,55 +12,6 @@ class Prestamos{
     function GetAbonosPrestamo($prestamo_id){  
         try{  
             $bd = new BD;
-            $conn =  $bd->conectar();  
-
-            if (!$conn) {
-                echo 'No pudo conectarse a mysql';
-                exit;
-            }
-             
-            $sql = "
-            SELECT 
-                abonos.ID AS 'ID', abonos.ABONO, abonos.FECHA, abonos.SALDO, 
-                prestamos.ID AS 'PRESTAMO_ID', prestamos.IMPORTE, prestamos.FECHA_INICIO, prestamos.FECHA_FIN,
-                clientes.ID AS 'CLIENTE_ID', clientes.NOMBRE as 'NOMBRE', clientes.APELLIDO as 'APELLIDO'     	  
-            FROM `abonos` 
-                
-            JOIN prestamos ON prestamos.ID = abonos.PRESTAMO_ID
-            JOIN clientes ON  clientes.ID = prestamos.CLIENTE_ID 
-            
-            WHERE 
-                prestamos.ID = '$prestamo_id' AND 
-                prestamos.FINALIZO = 'N' 
-                
-            ORDER BY abonos.`FECHA` ASC
-            ";
-            
-            $resultado = mysqli_query($conn, $sql);
-            
-            if (!$resultado) {
-                echo "Error de BD, no se pudo consultar la base de datos\n";
-                echo "Error MySQL: " . mysqli_error();
-                exit;
-            }
-
-            $array = array();  
-
-            while($row = $resultado->fetch_object()){
-                $array[] = $row; 
-            }  
-            
-            return $array;  
-        }  
-        catch(Exception $e){  
-            echo("Error!");
-            return "Error en la consulta";  
-        }  
-    }  
-
-    function GetPrestamos(){  
-        try{  
-            $bd = new BD;
             $conn = $bd->conectar();  
 
             if (!$conn) {
@@ -69,24 +20,20 @@ class Prestamos{
             }
              
             $sql = "
-                SELECT prestamos.*, clientes.NOMBRE, clientes.APELLIDO,
-
-                    -- Calcular el Saldo de cada prestamo
-                    (
-                        IMPORTE -  
-                        -- Calcula el total de abonos del préstamo
-                        (
-                            SELECT 
-                            if(sum(abonos.ABONO) IS NULL, 0, sum(abonos.ABONO))
-                            FROM abonos
-                            WHERE abonos.PRESTAMO_ID = prestamos.ID
-                            
-                        )                   
-                    ) AS 'SALDO'
-
-                FROM `prestamos` 
-                JOIN clientes ON clientes.ID = prestamos.CLIENTE_ID 
-                ORDER BY prestamos.FECHA_INICIO ASC
+                SELECT 
+                    abonos.ID AS 'ID', abonos.ABONO, abonos.SALDO, 
+                    prestamos.ID AS 'PRESTAMO_ID', prestamos.IMPORTE, 
+                    DATE_FORMAT(abonos.FECHA, '%d/%m/%Y') AS 'FECHA', 
+                    clientes.ID AS 'CLIENTE_ID', clientes.NOMBRE as 'NOMBRE', clientes.APELLIDO as 'APELLIDO'     	  
+                FROM `abonos`   
+                    
+                JOIN prestamos ON prestamos.ID = abonos.PRESTAMO_ID
+                JOIN clientes ON  clientes.ID = prestamos.CLIENTE_ID 
+                
+                WHERE 
+                    prestamos.ID = '$prestamo_id' 
+                    
+                ORDER BY abonos.`FECHA` ASC
             ";
             
             $resultado = mysqli_query($conn, $sql);
@@ -109,8 +56,44 @@ class Prestamos{
             echo("Error!");
             return "Error en la consulta";  
         }  
+    }  
+
+    /**
+     * Obtiene los préstamos activos
+     */
+    function GetPrestamos(){  
+        $bd = new BD; 
+        $sql = "
+            SELECT prestamos.ID, prestamos.CLIENTE_ID, PRESTAMO, IMPORTE, MESES, COMISION, 
+            ABONOS, PLAZOS, FINALIZO , clientes.NOMBRE, clientes.APELLIDO,  
+
+            DATE_FORMAT(FECHA_INICIO, '%d/%m/%Y') AS 'FECHA_INICIO',
+            DATE_FORMAT(FECHA_FIN, '%d/%m/%Y') AS 'FECHA_FIN',
+
+            -- Calcular el Saldo de cada prestamo
+            (
+                IMPORTE -  
+                -- Calcula el total de abonos del préstamo
+                (
+                    SELECT 
+                    if(sum(abonos.ABONO) IS NULL, 0, sum(abonos.ABONO))
+                    FROM abonos
+                    WHERE abonos.PRESTAMO_ID = prestamos.ID
+                    
+                )                   
+            ) AS 'SALDO',
+            IF(prestamos.FIRMA IS NOT NULL, true, false) AS FIRMADO
+            FROM `prestamos` 
+            JOIN clientes ON clientes.ID = prestamos.CLIENTE_ID 
+            WHERE prestamos.FINALIZO = 'N' 
+            ORDER BY prestamos.FECHA_INICIO ASC
+        ";
+        return $bd->select($sql); 
     }   
 
+    /**
+     * Obtiene los abonos que debe dar un cliente
+     */
     function GetAbonosCliente($cliente){  
         try{  
             $bd = new BD;
@@ -162,7 +145,7 @@ class Prestamos{
         }  
     }  
  
-    function RegistrarAbono($DATA){  
+    function RegistrarAbono($DATA){    
         try{  
             $bd = new BD;
             $conn =  $bd->conectar();  
@@ -195,7 +178,7 @@ class Prestamos{
             echo("Error!");
             return "Error en la consulta";  
         }  
-    }  
+    }   
 
     function GetPrestamo($id){  
         try{  
@@ -208,13 +191,28 @@ class Prestamos{
             }
              
             $sql = "  
-                SELECT prestamos.*, clientes.NOMBRE, clientes.APELLIDO,
+                SELECT prestamos.ID, prestamos.CLIENTE_ID, PRESTAMO, IMPORTE, MESES, COMISION, 
+                ABONOS, PLAZOS, FINALIZO , clientes.NOMBRE, clientes.APELLIDO,   
+            
+                --DATE_FORMAT(FECHA_INICIO, '%d/%m/%Y') AS 'FECHA_INICIO',
+                --DATE_FORMAT(FECHA_FIN, '%d/%m/%Y') AS 'FECHA_FIN',
 
-                    -- Calcular el Saldo de cada prestamo
-                    (SELECT prestamos.IMPORTE-SUM(abonos.ABONO) FROM `abonos` 
-                    WHERE abonos.PRESTAMO_ID = prestamos.ID) AS 'SALDO'
-                
-                FROM `prestamos`  
+                FECHA_INICIO,
+                FECHA_FIN,
+            
+                -- Calcular el Saldo de cada prestamo
+                (
+                    IMPORTE -  
+                    -- Calcula el total de abonos del préstamo
+                    (
+                        SELECT 
+                        if(sum(abonos.ABONO) IS NULL, 0, sum(abonos.ABONO))
+                        FROM abonos
+                        WHERE abonos.PRESTAMO_ID = prestamos.ID
+                        
+                    )                   
+                ) AS 'SALDO', FIRMADO
+                FROM prestamos 
                 JOIN clientes ON clientes.ID = prestamos.CLIENTE_ID
                 WHERE prestamos.ID = '$id'
                 ORDER BY prestamos.FECHA_INICIO ASC
@@ -333,5 +331,139 @@ class Prestamos{
             echo("Error!");
             return "Error en la consulta";  
         }  
+    } 
+    
+    function FinalizarPrestamo($id){  
+        try{  
+            $bd = new BD;
+            $conn =  $bd->conectar();  
+
+            if (!$conn) {
+                echo 'No pudo conectarse a mysql';
+                exit;
+            }
+             
+            $sql = "
+                UPDATE prestamos 
+                SET FINALIZO = 'S'
+                WHERE ID = $id
+            ";
+            
+            $resultado = mysqli_query($conn, $sql);
+            
+            if (!$resultado) {
+                echo "Error de BD, no se pudo consultar la base de datos\n";
+                echo "Error MySQL: " . mysqli_error($conn);
+                exit;
+            }
+ 
+            return $resultado;  
+        }  
+        catch(Exception $e){  
+            echo("Error!");
+            return "Error en la consulta";  
+        }  
     }  
+
+    function EliminarPrestamo($id){  
+        try{  
+            $bd = new BD;
+            $conn =  $bd->conectar();  
+
+            if (!$conn) {
+                echo 'No pudo conectarse a mysql';
+                exit;
+            }
+             
+            $sql = "
+                DELETE FROM prestamos WHERE ID = $id
+            ";
+            
+            $resultado = mysqli_query($conn, $sql);
+            
+            if (!$resultado) {
+                echo "Error de BD, no se pudo consultar la base de datos\n";
+                echo "Error MySQL: " . mysqli_error($conn);
+                exit;
+            }
+ 
+            return $resultado;  
+        }  
+        catch(Exception $e){  
+            echo("Error!");
+            return "Error en la consulta";  
+        }  
+    }  
+
+    function GuardarFotoPrestamo($id, $data){  
+        try{  
+            $bd = new BD;
+            $conn = $bd->conectar();  
+
+            if (!$conn) {
+                echo 'No pudo conectarse a mysql';
+                exit;
+            }   
+
+            $sql = "
+                UPDATE prestamos SET 
+                FIRMA = '".$data['FIRMA']."', 
+                INE1 = '".$data['INE1']."', 
+                INE2 = '".$data['INE2']."'
+                WHERE ID = $id
+            ";
+            
+            $resultado = new \stdClass();
+            $resultado->valida = mysqli_query($conn, $sql);
+            $resultado->inserted = mysqli_insert_id($conn);
+            
+            if (!$resultado) {
+                echo "Error de BD, no se pudo consultar la base de datos\n";
+                echo "Error MySQL: " . mysqli_error($conn);
+                $resultado->error = mysqli_error($conn);
+                exit;
+            }
+ 
+            return $resultado;  
+        }  
+        catch(Exception $e){  
+            echo("Error!");
+            return "Error en la consulta";  
+        }  
+    } 
+
+    public function UpdateContratoFirmado($id){
+        try{  
+            $bd = new BD;
+            $conn = $bd->conectar();  
+
+            if (!$conn) {
+                echo 'No pudo conectarse a mysql';
+                exit;
+            }   
+
+            $sql = "
+                UPDATE prestamos SET
+                FIRMADO = true
+                WHERE ID = $id
+            ";
+            
+            $resultado = new \stdClass();
+            $resultado->valida = mysqli_query($conn, $sql);
+            $resultado->inserted = mysqli_insert_id($conn);
+            
+            if (!$resultado) {
+                echo "Error de BD, no se pudo consultar la base de datos\n";
+                echo "Error MySQL: " . mysqli_error($conn);
+                $resultado->error = mysqli_error($conn);
+                exit;
+            }
+ 
+            return $resultado;  
+        }  
+        catch(Exception $e){  
+            echo("Error!");
+            return "Error en la consulta";  
+        }   
+    }
 }

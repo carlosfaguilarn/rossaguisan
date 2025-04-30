@@ -1,5 +1,5 @@
 <?php
-    include_once('lib/Smarty/libs/smarty.class.php');
+    include_once('lib/Smarty/libs/Smarty.class.php');
     include_once('class.usuarios.php');
     $title = "Login";
     $html = new Smarty;
@@ -16,6 +16,7 @@
             $_SESSION['USER_USUARIO'] = $user->usuario;
             $_SESSION['USER_NOMBRE'] = $user->nombre;
             $_SESSION['USER_PHOTO'] = $user->foto;
+            $_SESSION['SOCIO_ID'] = $user->socio_id;
             header("Location: /");
         }else{
             $html->assign('error_message', 'Usuario o contraseña incorrectos, intente de nuevo');

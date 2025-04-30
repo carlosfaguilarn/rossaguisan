@@ -67,6 +67,10 @@ class HtmlTest extends \PHPUnit_Framework_TestCase
     <head>
         <style type="text">.my-class { color: red; }</style>
         <link type="text/css" href="my-style.css"/>
+
+
+
+
     </head>
     <body class="my-class"><p>Hello World</p></body>
 </html>';

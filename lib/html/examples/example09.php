@@ -41,6 +41,10 @@ if ($generate) {
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
         <title>Exemple d'auto génération de PDF</title>
+
+
+
+
     </head>
     <body>
 <?php

@@ -8,10 +8,12 @@ class ComposerStaticInit1b604a7cbe0af662ea51500ffe55a769
 {
     public static $files = array (
         '9b38cf48e83f5d8f60375221cd213eee' => __DIR__ . '/..' . '/phpstan/phpstan/bootstrap.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '7e9bd612cc444b3eed788ebbe46263a0' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/autoload.php',
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
         '07d7f1a47144818725fd8d91a907ac57' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/create_uploaded_file.php',
         'da94ac5d3ca7d2dbab84ce561ce72bfd' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/marshal_headers_from_sapi.php',
         '3d97c8dcdfba8cb85d3b34f116bb248b' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/marshal_method_from_sapi.php',
@@ -28,6 +30,7 @@ class ComposerStaticInit1b604a7cbe0af662ea51500ffe55a769
         'cc8e14526dc240491e17a838cb78508c' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/normalize_server.legacy.php',
         '786bf90caabc9e09b6ad4cc5ca8f0e30' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/normalize_uploaded_files.legacy.php',
         '751a5a3f463e4be759be31748b61737c' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/parse_cookie_header.legacy.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
     );
@@ -43,14 +46,18 @@ class ComposerStaticInit1b604a7cbe0af662ea51500ffe55a769
         ),
         'S' => 
         array (
+            'Symfony\\Polyfill\\Php80\\' => 23,
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
-            'Slim\\Tests\\' => 11,
+            'Symfony\\Contracts\\Translation\\' => 30,
+            'Symfony\\Component\\Translation\\' => 30,
             'Slim\\Psr7\\' => 10,
             'Slim\\Http\\' => 10,
             'Slim\\' => 5,
         ),
         'P' => 
         array (
+            'Psr\\SimpleCache\\' => 16,
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Server\\' => 16,
             'Psr\\Http\\Message\\' => 17,
@@ -71,6 +78,10 @@ class ComposerStaticInit1b604a7cbe0af662ea51500ffe55a769
         'I' => 
         array (
             'Intervention\\Image\\' => 19,
+            'Illuminate\\Support\\' => 19,
+            'Illuminate\\Database\\' => 20,
+            'Illuminate\\Contracts\\' => 21,
+            'Illuminate\\Container\\' => 21,
         ),
         'H' => 
         array (
@@ -83,17 +94,25 @@ class ComposerStaticInit1b604a7cbe0af662ea51500ffe55a769
         ),
         'F' => 
         array (
+            'Firebase\\JWT\\' => 13,
             'Fig\\Http\\Message\\' => 17,
             'FastRoute\\' => 10,
         ),
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
+            'Doctrine\\Inflector\\' => 19,
+            'Doctrine\\Common\\Inflector\\' => 26,
             'DeepCopy\\' => 9,
+        ),
+        'C' => 
+        array (
+            'Carbon\\' => 7,
         ),
         'A' => 
         array (
             'AdrianSuter\\Autoload\\Override\\' => 30,
+            'Acredito\\' => 9,
         ),
     );
 
@@ -108,13 +127,25 @@ class ComposerStaticInit1b604a7cbe0af662ea51500ffe55a769
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
+        'Symfony\\Polyfill\\Php80\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
+        ),
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
-        'Slim\\Tests\\' => 
+        'Symfony\\Contracts\\Translation\\' => 
         array (
-            0 => __DIR__ . '/..' . '/slim/slim/tests',
+            0 => __DIR__ . '/..' . '/symfony/translation-contracts',
+        ),
+        'Symfony\\Component\\Translation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/translation',
         ),
         'Slim\\Psr7\\' => 
         array (
@@ -127,6 +158,10 @@ class ComposerStaticInit1b604a7cbe0af662ea51500ffe55a769
         'Slim\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/slim/Slim',
+        ),
+        'Psr\\SimpleCache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
         ),
         'Psr\\Log\\' => 
         array (
@@ -174,6 +209,22 @@ class ComposerStaticInit1b604a7cbe0af662ea51500ffe55a769
         array (
             0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
         ),
+        'Illuminate\\Support\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/illuminate/support',
+        ),
+        'Illuminate\\Database\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/illuminate/database',
+        ),
+        'Illuminate\\Contracts\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/illuminate/contracts',
+        ),
+        'Illuminate\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/illuminate/container',
+        ),
         'Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-http/message-factory/src',
@@ -185,6 +236,10 @@ class ComposerStaticInit1b604a7cbe0af662ea51500ffe55a769
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
         'Fig\\Http\\Message\\' => 
         array (
@@ -198,13 +253,29 @@ class ComposerStaticInit1b604a7cbe0af662ea51500ffe55a769
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
         ),
+        'Doctrine\\Inflector\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector',
+        ),
+        'Doctrine\\Common\\Inflector\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
+        ),
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
+        'Carbon\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
+        ),
         'AdrianSuter\\Autoload\\Override\\' => 
         array (
             0 => __DIR__ . '/..' . '/adriansuter/php-autoload-override/src',
+        ),
+        'Acredito\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/../apiv3',
         ),
     );
 
@@ -219,6 +290,46 @@ class ComposerStaticInit1b604a7cbe0af662ea51500ffe55a769
     );
 
     public static $classMap = array (
+        'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+        'Conekta\\Address' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Address.php',
+        'Conekta\\ApiError' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Exceptions/ApiError.php',
+        'Conekta\\AuthenticationError' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Exceptions/AuthenticationError.php',
+        'Conekta\\Card' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Card.php',
+        'Conekta\\Charge' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Charge.php',
+        'Conekta\\Checkout' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Checkout.php',
+        'Conekta\\Conekta' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Conekta.php',
+        'Conekta\\ConektaList' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/ConektaList.php',
+        'Conekta\\ConektaObject' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/ConektaObject.php',
+        'Conekta\\ConektaResource' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/ConektaResource.php',
+        'Conekta\\Customer' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Customer.php',
+        'Conekta\\DiscountLine' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/DiscountLine.php',
+        'Conekta\\Event' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Event.php',
+        'Conekta\\Handler' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Exceptions/Handler.php',
+        'Conekta\\Lang' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Lang.php',
+        'Conekta\\LineItem' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/LineItem.php',
+        'Conekta\\Log' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Log.php',
+        'Conekta\\MalformedRequestError' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Exceptions/MalformedRequestError.php',
+        'Conekta\\Method' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Method.php',
+        'Conekta\\NoConnectionError' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Exceptions/NoConnectionError.php',
+        'Conekta\\Order' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Order.php',
+        'Conekta\\ParameterValidationError' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Exceptions/ParameterValidationError.php',
+        'Conekta\\Payee' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Payee.php',
+        'Conekta\\PaymentMethod' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/PaymentMethod.php',
+        'Conekta\\PaymentSource' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/PaymentSource.php',
+        'Conekta\\Payout' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Payout.php',
+        'Conekta\\PayoutMethod' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/PayoutMethod.php',
+        'Conekta\\Plan' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Plan.php',
+        'Conekta\\ProcessingError' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Exceptions/ProcessingError.php',
+        'Conekta\\Requestor' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Requestor.php',
+        'Conekta\\ResourceNotFoundError' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Exceptions/ResourceNotFoundError.php',
+        'Conekta\\ShippingContact' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/ShippingContact.php',
+        'Conekta\\ShippingLine' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/ShippingLine.php',
+        'Conekta\\Subscription' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Subscription.php',
+        'Conekta\\TaxLine' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/TaxLine.php',
+        'Conekta\\Token' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Token.php',
+        'Conekta\\Util' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Util.php',
+        'Conekta\\Webhook' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/Webhook.php',
+        'Conekta\\WebhookLog' => __DIR__ . '/..' . '/conekta/conekta-php/lib/Conekta/WebhookLog.php',
         'Datamatrix' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/datamatrix.php',
         'PDF417' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/pdf417.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
@@ -792,6 +903,7 @@ class ComposerStaticInit1b604a7cbe0af662ea51500ffe55a769
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'TCPDF' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf.php',
         'TCPDF2DBarcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_barcodes_2d.php',
         'TCPDFBarcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_barcodes_1d.php',
@@ -812,6 +924,8 @@ class ComposerStaticInit1b604a7cbe0af662ea51500ffe55a769
         'TheSeer\\Tokenizer\\TokenCollectionException' => __DIR__ . '/..' . '/theseer/tokenizer/src/TokenCollectionException.php',
         'TheSeer\\Tokenizer\\Tokenizer' => __DIR__ . '/..' . '/theseer/tokenizer/src/Tokenizer.php',
         'TheSeer\\Tokenizer\\XMLSerializer' => __DIR__ . '/..' . '/theseer/tokenizer/src/XMLSerializer.php',
+        'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+        'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

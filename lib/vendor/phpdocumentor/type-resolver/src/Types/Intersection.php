@@ -8,7 +8,7 @@
  *  @link      http://phpdoc.org
  */
 
-declare(strict_types=1);
+
 
 namespace phpDocumentor\Reflection\Types;
 

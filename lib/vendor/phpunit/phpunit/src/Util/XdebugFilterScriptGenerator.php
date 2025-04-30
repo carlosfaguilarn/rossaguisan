@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php 
 /*
  * This file is part of PHPUnit.
  *
@@ -31,7 +31,7 @@ final class XdebugFilterScriptGenerator
         $files = \implode(",\n", $files);
 
         return <<<EOF
-<?php declare(strict_types=1);
+<?php 
 if (!\\function_exists('xdebug_set_filter')) {
     return;
 }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.36, created on 2020-09-12 00:49:43
+/* Smarty version 3.1.36, created on 2020-10-08 02:10:29
   from 'C:\xampp\htdocs\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.36',
-  'unifunc' => 'content_5f5bff07b0f384_65129363',
+  'unifunc' => 'content_5f7e58f58a2e90_36973694',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3da335e60fac6cfe62561db5244f9af1b2a2e05a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\templates\\index.tpl',
-      1 => 1599864582,
+      1 => 1601573325,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f5bff07b0f384_65129363 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7e58f58a2e90_36973694 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!--
 
 =========================================================
@@ -101,6 +101,10 @@ function content_5f5bff07b0f384_65129363 (Smarty_Internal_Template $_smarty_tpl)
 >
 <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
 
+
+
+
+
 </head>
 
 <body>
@@ -137,7 +141,7 @@ function content_5f5bff07b0f384_65129363 (Smarty_Internal_Template $_smarty_tpl)
 " class="card-img-top rounded-circle border-white" alt="Bonnie Green">
                                 </div>
                                 <div class="d-block">
-                                    <h2 class="h6">Hola, <?php echo $_SESSION['USER_NOMBRE'];?>
+                                    <h2 class="h6">Hola!, <?php echo $_SESSION['USER_NOMBRE'];?>
 </h2>
                                     <a href="/logout.php" class="btn btn-secondary btn-xs"><span class="mr-2"><span class="fas fa-sign-out-alt"></span></span>Cerrar sesión</a>
                                 </div>

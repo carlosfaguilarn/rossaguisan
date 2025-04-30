@@ -1,4 +1,4 @@
-declare(strict_types=1);
+
 
 {namespace}class {class_name} extends \SoapClient
 {

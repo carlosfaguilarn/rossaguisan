@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Slim Framework (https://slimframework.com)
  *
  * @license https://github.com/slimphp/Slim/blob/4.x/LICENSE.md (MIT License)
  */
 
-declare(strict_types=1);
+
 
 namespace Slim\Factory;
 
@@ -76,7 +77,8 @@ class ServerRequestCreatorFactory
     protected static function attemptServerRequestCreatorDecoration(
         ServerRequestCreatorInterface $serverRequestCreator
     ): ServerRequestCreatorInterface {
-        if (static::$slimHttpDecoratorsAutomaticDetectionEnabled
+        if (
+            static::$slimHttpDecoratorsAutomaticDetectionEnabled
             && SlimHttpServerRequestCreator::isServerRequestDecoratorAvailable()
         ) {
             return new SlimHttpServerRequestCreator($serverRequestCreator);

@@ -1,4 +1,8 @@
 .temp/
 node_modules/
+ahorro/
+distribuidora/
+files/
+templates_c/
 dist/
-html&css/
+html&css/  

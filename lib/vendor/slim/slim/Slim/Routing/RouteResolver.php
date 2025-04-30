@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Slim Framework (https://slimframework.com)
  *
  * @license https://github.com/slimphp/Slim/blob/4.x/LICENSE.md (MIT License)
  */
 
-declare(strict_types=1);
+
 
 namespace Slim\Routing;
 
@@ -14,6 +15,8 @@ use Slim\Interfaces\DispatcherInterface;
 use Slim\Interfaces\RouteCollectorInterface;
 use Slim\Interfaces\RouteInterface;
 use Slim\Interfaces\RouteResolverInterface;
+
+use function rawurldecode;
 
 /**
  * RouteResolver instantiates the FastRoute dispatcher
@@ -48,7 +51,10 @@ class RouteResolver implements RouteResolverInterface
      */
     public function computeRoutingResults(string $uri, string $method): RoutingResults
     {
-        $uri = '/' . ltrim(rawurldecode($uri), '/');
+        $uri = rawurldecode($uri);
+        if ($uri === '' || $uri[0] !== '/') {
+            $uri = '/' . $uri;
+        }
         return $this->dispatcher->dispatch($method, $uri);
     }
 

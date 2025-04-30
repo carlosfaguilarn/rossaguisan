@@ -5,7 +5,8 @@
     $title = "Dashboard";
     $html = new Smarty;
     $obj_dashboard = new Dashboard;
-    $data = $obj_dashboard->GetDashboard(); 
+    $data = $obj_dashboard->GetDashboard(1); 
+    $socio_id = $_SESSION['SOCIO_ID'];
     
     $fecha_actual = getdate();
     $firstDay = date('Y-m-01');
@@ -14,10 +15,10 @@
     $fechaMesPasadoFirst = date("Y-m-d", strtotime("-1 month", strtotime($firstDay)));
     $fechaMesPasadoLast = date("Y-m-t", strtotime($fechaMesPasadoFirst));
 
-    $data_anual = $obj_dashboard->GetIngresosAnual();
+    $data_anual = $obj_dashboard->GetIngresosAnual($socio_id);
        
-    $ingresos = $obj_dashboard->GetIngresosMes($firstDay, $lastDay);  
-    $mes_pasado = $obj_dashboard->GetIngresosMes($fechaMesPasadoFirst, $fechaMesPasadoLast);  
+    $ingresos = $obj_dashboard->GetIngresosMes($firstDay, $lastDay, $socio_id);  
+    $mes_pasado = $obj_dashboard->GetIngresosMes($fechaMesPasadoFirst, $fechaMesPasadoLast, $socio_id);  
     $ingresos['UTILIDAD_PORCENTAJE'] = round(($ingresos['UTILIDAD_MES'] / $mes_pasado['UTILIDAD_MES'] * 100-100), 2);
     $ingresos['ABONOS_PORCENTAJE']   = round(($ingresos['ABONOS_MES'] / $mes_pasado['ABONOS_MES'] * 100-100), 2);
 

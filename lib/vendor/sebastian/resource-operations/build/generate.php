@@ -1,5 +1,5 @@
 #!/usr/bin/env php
-<?php declare(strict_types=1);
+<?php 
 /*
  * This file is part of resource-operations.
  *
@@ -28,7 +28,7 @@ $resourceFunctions = array_unique($resourceFunctions);
 sort($resourceFunctions);
 
 $buffer = <<<EOT
-<?php declare(strict_types=1);
+<?php 
 /*
  * This file is part of resource-operations.
  *

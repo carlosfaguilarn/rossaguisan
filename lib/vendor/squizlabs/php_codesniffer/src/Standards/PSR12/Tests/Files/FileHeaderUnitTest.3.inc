@@ -6,7 +6,7 @@
 
 namespace Vendor\Package;
 
-declare(strict_types=1);
+
 
 use Vendor\Package\{ClassA as A, ClassB, ClassC as C};
 use Vendor\Package\SomeNamespace\ClassD as D;

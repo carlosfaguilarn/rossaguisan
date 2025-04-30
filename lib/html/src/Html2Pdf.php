@@ -630,6 +630,10 @@ class Html2Pdf
     <head>
         <title>HTML View</title>
         <meta http-equiv="Content-Type" content="text/html; charset='.$this->_encoding.'" >
+
+
+
+
     </head>
     <body style="padding: 10px; font-size: 10pt;font-family:    Verdana;">
     '.$html.'
