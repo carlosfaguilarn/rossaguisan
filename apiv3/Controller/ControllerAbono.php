@@ -14,6 +14,20 @@ use Acredito\General\Respuesta as Respuesta;
   
 class ControllerAbono{
     /**
+     * Obtiene un abono
+     */
+    public function getAbono(Request $request, Response $response, $args) {
+        $obj_abono = new Abono;
+        $abono = $obj_abono->GetAbono($args['id']);
+
+        if (!$abono || count($abono) == 0) {
+            return $response->withJson(Respuesta::createNegative("Abono no encontrado"));
+        }
+
+        return $response->withJson(Respuesta::createPositive($abono[0]));
+    }
+    
+    /**
      * Obtiene abonos de un préstamo
      */
     public function getAbonosPrestamo(Request $request, Response $response) { 
@@ -40,12 +54,12 @@ class ControllerAbono{
             $mensaje = "Abono registrado correctamente"; 
             // Revisar si el préstamo ha sido saldado
             $prestamo = $prestamos->GetPrestamo($prestamo_id); 
-            if($prestamo->SALDO == 0){
+            //if($prestamo->SALDO == 0){
                 // Finalizar préstamo
-                if($prestamos->FinalizarPrestamo($prestamo_id)){
-                    $mensaje = "Abono registrado correctamente.\nEl préstamo ha sido saldado";
-                }
-            }
+            //    if($prestamos->FinalizarPrestamo($prestamo_id)){
+            //        $mensaje = "Abono registrado correctamente.\nEl préstamo ha sido saldado";
+            //    }
+            //}
             $log = new Log();
             $log->descripcion = "Nuevo abono a $prestamo->NOMBRE $prestamo->APELLIDO de $".$data['abono'];
             $log->usuario_id = $request->getAttribute('user');
@@ -87,5 +101,28 @@ class ControllerAbono{
 
         $fileEncoded = new Stream($stream);
         return $response->withBody($fileEncoded); 
+    }
+
+    /**
+     * Elimina un abono
+     */
+    public function deleteAbono(Request $request, Response $response, array $args)
+    {
+        $id = $args['id'];
+        $abono = new Abono;
+        $resultado = $abono->EliminarAbono($id);
+        $valida = false;
+
+        if($resultado != null){
+            $mensaje = "Abono eliminado correctamente";
+            $valida = true;
+        }else{
+            $mensaje = "Error al eliminar el abono";
+        }
+
+        return $response->withJson([
+            "valida" => $valida,
+            "mensaje" => $mensaje
+        ]);
     }
 } 

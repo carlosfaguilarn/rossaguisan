@@ -33,7 +33,70 @@ class Archivo {
                 "abonos" => $abonos,
             ];
 
-            $html = $obj_util->load_view('views/abonos/template_abono', $data, true);
+            if($prestamo->PRODUCTO_ID != null){
+                $html = $obj_util->load_view('views/abonos/template_abono_hogar', $data, true);
+            }else{
+                $html = $obj_util->load_view('views/abonos/template_abono', $data, true);
+            }
+
+            $dompdf->loadHtml($html);
+            $dompdf->setPaper('letter', 'portrait');
+
+            $contenido = "";
+            $dompdf->render();
+            $output = $dompdf->output();
+
+            $contenido = "OK"; 
+            $filepath = "../files/recibos/$prestamo->ID.pdf";
+            $imgpath  = "../files/recibos/img/$prestamo->ID.jpg";
+
+            file_put_contents($filepath, $output); 
+
+            // Generar imagen
+            $input = $filepath;
+            $output = $imgpath;
+
+            $command = "gs -q -dNODISPLAY -c \"($filepath) (r) file runpdfbegin pdfpagecount = quit\"";
+            $page = intval(shell_exec($command));
+
+            $command = "gs -dNOPAUSE -dBATCH -sDEVICE=jpeg -dFirstPage=$page -dLastPage=$page -r150 -sOutputFile=$output $input";
+            exec($command, $outputLines, $resultCode);
+        }catch(Exception $e){
+            $contenido = $e->getMessage();
+        }
+
+        return $contenido;
+    }
+
+    public function GetReporteAbonosPrestamoOld($prestamo_id){
+        $obj_prestamos = new Prestamos;
+        $obj_util = new Util;
+        $prestamo = $obj_prestamos->GetPrestamo($prestamo_id);
+
+        if(!isset($prestamo))
+            return null;
+
+        $abonos = $obj_prestamos->GetAbonosPrestamo($prestamo_id);
+        $lastAbonoIndex = 0;
+
+        $ultimo_abono = (object) array("FECHA" => "");
+        if(count($abonos) > 0){
+            $ultimo_abono = $abonos[count($abonos)-1];
+        }
+
+        try{
+            $dompdf = new Dompdf();
+            $data = [
+                "prestamo" => $prestamo,
+                "ultimo_abono" => $ultimo_abono,
+                "abonos" => $abonos,
+            ];
+
+            if($prestamo->PRODUCTO_ID != null){
+                $html = $obj_util->load_view('views/abonos/template_abono_hogar', $data, true);
+            }else{
+                $html = $obj_util->load_view('views/abonos/template_abono', $data, true);
+            }
 
             $dompdf->loadHtml($html);
             $dompdf->setPaper('letter', 'portrait');

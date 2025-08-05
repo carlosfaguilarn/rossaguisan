@@ -15,7 +15,7 @@ class Prestamo extends Model{
     /**
      * Campos visibles
      */
-    protected $fields = ["id", "cliente_id", "prestamo", "importe", "fecha_inicio", "fecha_fin", "meses", "comision", "abonos", "plazos", "finalizo", "socio_id", "fecha", "firmado"];
+    protected $fields = ["id", "cliente_id", "prestamo", "importe", "fecha_inicio", "fecha_fin", "meses", "comision", "abonos", "plazos", "finalizo", "socio_id", "fecha", "firmado", "producto_id"];
 
     public $timestamps = false;
 
@@ -30,7 +30,7 @@ class Prestamo extends Model{
             ->get();
 
         foreach ($prestamos as &$prestamo) {
-            $prestamo->saldo = $prestamo->importe - Abono::where("prestamo_id", $prestamo->ID)->sum("abono");
+            $prestamo->saldo = $prestamo->importe - Abono::where("prestamo_id", $prestamo->id)->sum("abono");
         }
 
         return $prestamos;
@@ -113,8 +113,20 @@ class Prestamo extends Model{
         $prestamo->plazos = $data['plazos'];
         $prestamo->finalizo = 'N';
         $prestamo->socio_id = $data['socio_id'];
+        $prestamo->producto_id = $data['producto_id'];
 
         return $prestamo->save();
+    }
+
+    /**
+     * Actualizar un nuevo abono
+     */
+    public function ActualizarPrestamo($data){
+        return Prestamo::where('id', $data['id'])->update([
+            'prestamo' => $data['prestamo'],
+            'importe' => $data['importe'],
+            'comision' => $data['comision'],
+        ]);
     }
 
     /**
@@ -136,9 +148,9 @@ class Prestamo extends Model{
     }
 
     public function FinalizarPrestamo($id){
-        $prestamo = self::find($id);
-        $prestamo->FINALIZO = 'S';
-        return $prestamo->save();
+        return Prestamo::where('id', $id)->update([
+            'finalizo' => 'S',
+        ]);
     }
 
     public function EliminarPrestamo($id){

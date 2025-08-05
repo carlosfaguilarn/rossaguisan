@@ -50,6 +50,7 @@ class Cliente extends Model{
         ";
         return $bd->select($sql, false);
     }
+
     public function RegistrarCliente2($DATA){ 
         $bd = new BD;
         $sql = "
@@ -62,4 +63,14 @@ class Cliente extends Model{
         "; 
         return $bd->insert($sql);
     }
+
+    public function ActualizarCliente($data)
+    {
+        return Cliente::where('id', $data['id'])->update([
+            'nombre' => $data['nombre'],
+            'apellido' => $data['apellido'],
+            'direccion' => $data['direccion'],
+            'telefono' => $data['telefono'],
+        ]);
+    } 
 }

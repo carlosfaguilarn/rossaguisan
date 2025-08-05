@@ -65,6 +65,7 @@ $app->group('', function (RouteCollectorProxy $group) {
 $app->group('', function (RouteCollectorProxy $group) {
     $group->get('/prestamos/socio/{SocioID}', 'Acredito\Controller\ControllerPrestamo:getPrestamos');
     $group->post('/prestamos/nuevo', 'Acredito\Controller\ControllerPrestamo:newPrestamo');
+    $group->post('/prestamos/actualizar', 'Acredito\Controller\ControllerPrestamo:updatePrestamo');
     $group->get('/prestamos/finalizar/{id}', 'Acredito\Controller\ControllerPrestamo:finPrestamo');
     $group->get('/prestamos/eliminar/{id}', 'Acredito\Controller\ControllerPrestamo:delPrestamo');
     $group->get('/prestamos/contrato/{id}', 'Acredito\Controller\ControllerPrestamo:getContratoPrestamo');
@@ -72,6 +73,8 @@ $app->group('', function (RouteCollectorProxy $group) {
     $group->get('/abonos/listado/{id}', 'Acredito\Controller\ControllerPrestamo:getAbonosPrestamo');
     $group->get('/abonos/cliente/{id}', 'Acredito\Controller\ControllerPrestamo:getAbonosCliente');
     $group->get('/abonos/pdf/{id}', 'Acredito\Controller\ControllerAbono:getReciboAbonos');
+    $group->get('/abonos/buscar/{id}', 'Acredito\Controller\ControllerAbono:getAbono');
+    $group->post('/abonos/eliminar/{id}', 'Acredito\Controller\ControllerAbono:deleteAbono');
     $group->post('/abonos/nuevo', 'Acredito\Controller\ControllerAbono:newAbono');
 })->add("Acredito\Middleware\MiddlewareAuth");
 
@@ -82,8 +85,7 @@ $app->group('', function (RouteCollectorProxy $group) {
 })->add("Acredito\Middleware\MiddlewareAuth");
 
 $app->post('/orden/create', 'Acredito\Controller\ControllerOrdenPago:create');
-$app->post('/ordenRecurrente/create', 'Acredito\Controller\ControllerOrdenPagoRecurrente:create');
-
+$app->post('/ordenRecurrente/create', 'Acredito\Controller\ControllerOrdenPagoRecurrente:create'); 
 $app->post('/orden/paid', 'Acredito\Controller\ControllerOrdenPago:paid');
 $app->post('/ordenRecurrente/paid', 'Acredito\Controller\ControllerOrdenPagoRecurrente:paid');
 $app->post('/ordenRecurrente/createCustomer', 'Acredito\Controller\ControllerOrdenPagoRecurrente:createCustomer');
@@ -93,6 +95,7 @@ $app->group('', function (RouteCollectorProxy $group) {
     $group->get('/clientes', 'Acredito\Controller\ControllerCliente:getClientes');
     $group->get('/clientes/{id}', 'Acredito\Controller\ControllerCliente:getCliente');
     $group->post('/cliente', 'Acredito\Controller\ControllerCliente:registrarCliente');
+    $group->post('/cliente/update', 'Acredito\Controller\ControllerCliente:actualizarCliente');
 })->add("Acredito\Middleware\MiddlewareAuth");
 
 /* RUTAS LOGS (PROTEGIDAS) */
@@ -104,6 +107,15 @@ $app->group('', function (RouteCollectorProxy $group) {
 /* RUTAS SOCIOS (PROTEGIDAS) */
 $app->group('', function (RouteCollectorProxy $group) {
     $group->get('/socios/listado', 'Acredito\Controller\ControllerSocio:getSocios');
+})->add("Acredito\Middleware\MiddlewareAuth");
+
+
+/* RUTAS PRODUCTOS (PROTEGIDAS) */
+$app->group('', function (RouteCollectorProxy $group) {
+    $group->get('/productos', 'Acredito\Controller\ControllerProducto:getProductos');
+    $group->get('/productos/{id}', 'Acredito\Controller\ControllerProducto:getProducto');
+    $group->post('/producto', 'Acredito\Controller\ControllerProducto:registrarProducto');
+    $group->post('/producto/actualizar', 'Acredito\Controller\ControllerProducto:actualizarProducto');
 })->add("Acredito\Middleware\MiddlewareAuth");
 
 $app->run();

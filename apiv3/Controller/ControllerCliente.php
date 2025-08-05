@@ -39,4 +39,20 @@ class ControllerCliente{
             return $response->withJson(Respuesta::createNegative("Error al crear el cliente"));
         }
     }
+
+    /**
+     * Actualizar cliente
+     */
+    public function actualizarCliente(Request $request, Response $response) { 
+        $params = $request->getParsedBody();
+        $params = array_change_key_case($params, CASE_LOWER);
+        
+        $cliente = new Cliente; 
+ 
+        if($cliente->ActualizarCliente($params)){
+            return $response->withJson(Respuesta::createPositive());
+        }else{
+            return $response->withJson(Respuesta::createNegative("Error al actualizar el cliente", $params));
+        }
+    }
 } 

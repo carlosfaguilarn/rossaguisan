@@ -208,12 +208,16 @@ class Prestamos{
                         SELECT 
                         if(sum(abonos.ABONO) IS NULL, 0, sum(abonos.ABONO))
                         FROM abonos
-                        WHERE abonos.PRESTAMO_ID = prestamos.ID
-                        
+                        WHERE abonos.PRESTAMO_ID = prestamos.ID 
                     )                   
-                ) AS 'SALDO', FIRMADO
+                ) AS 'SALDO', FIRMADO, 
+                
+                productos.ID AS 'PRODUCTO_ID',
+                productos.descripcion AS 'PRODUCTO'
+
                 FROM prestamos 
                 JOIN clientes ON clientes.ID = prestamos.CLIENTE_ID
+                LEFT JOIN productos ON productos.id = prestamos.PRODUCTO_ID
                 WHERE prestamos.ID = '$id'
                 ORDER BY prestamos.FECHA_INICIO ASC
             ";

@@ -79,18 +79,20 @@ class ControllerPrestamo{
         $user = $request->getAttribute('user');
         $prestamos = new Prestamo;
         $prestamo = $prestamos->GetPrestamo($id);
-
-        $mensaje = "";
-        $valida = $prestamos->FinalizarPrestamo($id);
-
+        $valida = false;
+        
         if(!isset($prestamo)){
             return $response->withJson([
                 "valida" => false,
                 "mensaje" => "No se puede finalizar el préstamo porque no existe"
             ]);
         }
-
-        if($valida){
+        
+        $mensaje = "";
+        $respuesta = $prestamos->FinalizarPrestamo($id);
+        
+        if($respuesta != null){
+            $valida = true;
             $mensaje = "¡Préstamo finalzado correctamente!";
             $log = new Log();
             $log->descripcion = "Se finalizó el préstamo de $prestamo->NOMBRE $prestamo->APELLIDO ($$prestamo->IMPORTE)";
@@ -144,6 +146,31 @@ class ControllerPrestamo{
             $log->save();
         }else{
             $mensaje = "Error al registrar el préstamo";
+        }
+
+        return $response->withJson([
+            "valida" => $valida,
+            "mensaje" => $mensaje
+        ]);
+    }
+
+    /**
+     * Registra un nuevo préstamo, retorna id del registro
+     */
+    public function updatePrestamo(Request $request, Response $response){
+        $data = $request->getParsedBody();
+        $prestamos = new Prestamo;
+        $clientes = new Cliente;
+
+        $mensaje = "";
+        $valida = false;
+        $respuesta = $prestamos->ActualizarPrestamo($data);
+
+        if($respuesta != null){
+            $mensaje = "Prestamo modificado correctamente";
+            $valida = true;
+        }else{
+            $mensaje = "Error al modificar el préstamo";
         }
 
         return $response->withJson([

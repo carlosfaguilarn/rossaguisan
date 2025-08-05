@@ -17,6 +17,32 @@ class Abono extends Model{
 
     public $timestamps = false;
 
+     /**
+     * Obtiene los abonos de un préstamo
+     */
+    public function GetAbono($id){
+        $fields = [
+            'abonos.id',
+            'abonos.fecha',
+            'abonos.prestamo_id',
+            'abonos.abono',
+            'abonos.saldo',
+            'prestamos.id as prestamo_id',
+            'prestamos.importe',
+            'clientes.nombre',
+            'clientes.apellido'
+        ];
+
+        $abonos = self::select($fields)
+            ->join('prestamos', 'prestamos.ID', '=', 'abonos.PRESTAMO_ID') 
+            ->join('clientes', 'clientes.ID', '=', 'prestamos.CLIENTE_ID') 
+            ->where('abonos.id', $id)
+            ->orderBy('abonos.fecha', 'asc')
+            ->get();
+
+        return $abonos;
+    }
+
     /**
      * Obtiene los abonos de un préstamo
      */
